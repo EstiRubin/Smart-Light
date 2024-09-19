@@ -1,7 +1,7 @@
 import BaseController from './BaseController.js';
-import service from '../services/ProjectsService.js';
+import service from '../services/ProjectService.js';
 
-class ProjectsController extends BaseController{
+class ProjectController extends BaseController{
     constructor(service){
         super(service);
     }
@@ -18,4 +18,4 @@ class ProjectsController extends BaseController{
     }
 }
 
-export default new ProjectsController(service);
+export default new ProjectController(service);

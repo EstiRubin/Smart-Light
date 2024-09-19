@@ -2,7 +2,7 @@ import mongoose from "mongoose";
 
 const Schema = mongoose.Schema;
 
-const ProjectsSchema = new Schema({
+const ProjectSchema = new Schema({
     _id: Number,
     locationCode: Number,
     description: String,
@@ -13,6 +13,6 @@ const ProjectsSchema = new Schema({
     volenteerCode: String
 }, { versionKey: false });
 /*, 'helpRequest'*/
-const ProjectsModel = mongoose.model('helpProjects', ProjectsSchema, 'helpProjects');
+const ProjectModel = mongoose.model('helpProjects', ProjectSchema, 'helpProjects');
 
-export default ProjectsModel;
+export default ProjectModel;

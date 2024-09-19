@@ -1,7 +1,7 @@
-import repo from '../repositories/ProjectsRepo.js';
+import repo from '../repositories/ProjectRepo.js';
 import BaseService from './BaseService.js';
 
-class ProjectsService extends BaseService{
+class ProjectService extends BaseService{
     constructor(repo){
         super(repo);
     }
@@ -16,4 +16,4 @@ class ProjectsService extends BaseService{
         }
     }
 }
-export default new ProjectsService(repo);
+export default new ProjectService(repo);

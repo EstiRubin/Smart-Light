@@ -1,9 +1,9 @@
 import connect from './db.js';
-import Projects from '../models/ProjectsModel.js';
+import Projects from '../models/ProjectModel.js';
 import buildPipeline from '../files/Pipline.js';
  import { byParams, byId } from '../files/Filters.js';
 
-class ProjectsRepo {
+class ProjectRepo {
     constructor(model) {
         this.model = model;
         connect();
@@ -72,4 +72,4 @@ class ProjectsRepo {
     }
 
  }
-export default new ProjectsRepo(Projects);
+export default new ProjectRepo(Projects);
