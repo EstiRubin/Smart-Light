@@ -27,6 +27,38 @@ class BaseController{
             next(e);
         }
     }
+
+    async add(req, res, next) {
+        try {
+            const response = await this.service.add(req.body);
+            return res.status(200).json(response);
+        }
+        catch (e) {
+            next(e);
+        }
+    }
+
+    async update(req, res, next) {
+        const { id } = req.params;
+        try {
+            const response = await this.service.update(id, req.body);
+            return res.status(200).json(response);
+        }
+        catch (e) {
+            next(e);
+        }
+    }
+
+    async delete(req, res, next) {
+        const { id } = req.params;
+        try {
+            const response = await this.service.delete(id);
+            return res.status(200).json(response);
+        }
+        catch (e) {
+            next(e);
+        }
+    }
 }
 
 export default BaseController;
