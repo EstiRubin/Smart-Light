@@ -2,11 +2,11 @@ import mongoose from "mongoose";
 
 const Schema = mongoose.Schema;
 
-const categoriesSchema = new Schema({
+const CategorySchema = new Schema({
     _id: Number,
     categoryName: String
-}, { versionKey: false });
+});
 
-const categoriesModel = mongoose.model('categories', categoriesSchema, 'categories');
+const Category = mongoose.model('categories', CategorySchema);
 
-export default categoriesModel;
+export default Category;

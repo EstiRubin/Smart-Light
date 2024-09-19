@@ -1,5 +1,5 @@
-import connect from "./db";
-import categories from '../models/CategoryModel';
+import connect from "./db.js";
+import Category from '../models/CategoryModel.js';
 
 class CategoryRepo {
     constructor(model) {
@@ -7,9 +7,9 @@ class CategoryRepo {
         connect();
     }
 
-    async getAll () {
+    async getAll() {
         try {
-            let categories = await this.model;
+            let categories = await this.model.find({}).exec();
             return categories;
         }
         catch (error) {
@@ -72,4 +72,4 @@ class CategoryRepo {
     }
 }
 
-export default new CategoryRepo(categories);
+export default new CategoryRepo(Category);

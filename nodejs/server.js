@@ -2,6 +2,7 @@ import { configDotenv } from 'dotenv';
 import  express  from 'express';
 // import projectRouter from './routers/ProjectRouter.js';
 import productRouter from './routers/ProductRouter.js';
+import categoryRouter from './routers/CategoryRouter.js';
 
 
 configDotenv()

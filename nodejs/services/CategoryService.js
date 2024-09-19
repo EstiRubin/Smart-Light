@@ -1,6 +1,7 @@
-import BaseService from "./BaseService";
+import CategoryRepo from "../repositories/CategoryRepo.js";
+import BaseService from "./BaseService.js";
 
-class categoriesService extends BaseService {
+class CategoryService extends BaseService {
     constructor(repo) {
         super(repo);
     }
@@ -26,4 +27,4 @@ class categoriesService extends BaseService {
       }
 
 }
-export default categoriesService;
+export default new CategoryService(CategoryRepo);
