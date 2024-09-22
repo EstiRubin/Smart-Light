@@ -4,15 +4,12 @@ const Schema = mongoose.Schema;
 
 const ProjectSchema = new Schema({
     _id: Number,
-    locationCode: Number,
-    description: String,
-    phone: String,
-    statusCode: Number,
-    numOfPeopleStuck: Number,
-    priorityCode: Number,
-    volenteerCode: String
+    nameOfProject: String,
+    architect: String,
+    projectCreationDate: String,
+    imags: Array,
+    combinedProducts: Array,
 }, { versionKey: false });
-/*, 'helpRequest'*/
-const ProjectModel = mongoose.model('helpProjects', ProjectSchema, 'helpProjects');
+const ProjectModel = mongoose.model('ProjectsModel', ProjectSchema, 'ProjectsModel');
 
 export default ProjectModel;

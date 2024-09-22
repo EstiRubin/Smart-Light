@@ -7,6 +7,6 @@ router.get('/', ProjectController.getAll);
 
 router.get('/:id', ProjectController.getById);
 
-router.put('/:id', ProjectController.update);
+// router.put('/:id', ProjectController.update);
 
 export default router;

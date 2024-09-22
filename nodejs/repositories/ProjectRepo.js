@@ -13,6 +13,7 @@ class ProjectRepo {
         const pipeline = buildPipeline();
         const aggregationResult = await this.model.aggregate(pipeline).exec();
         return aggregationResult;
+        // return await this.model.aggregate().exec();
     }
 
     async getById(id) {
@@ -56,20 +57,20 @@ class ProjectRepo {
     //     }
     // }
 
-    async update(id, data) {
-        try {
-            let req = await this.model.findByIdAndUpdate( { _id: id }, 
-                { 
-                    statusCode: 2, 
-                    volenteerCode: data.id 
-                } );
-            return req;
-        }
-        catch (errors) {
-            console.log(errors.message);
-            throw new Error("An error occurred while trying to update the Projects's status. Please try again later.");
-        }
-    }
+    // async update(id, data) {
+    //     try {
+    //         let req = await this.model.findByIdAndUpdate( { _id: id }, 
+    //             { 
+    //                 statusCode: 2, 
+    //                 volenteerCode: data.id 
+    //             } );
+    //         return req;
+    //     }
+    //     catch (errors) {
+    //         console.log(errors.message);
+    //         throw new Error("An error occurred while trying to update the Projects's status. Please try again later.");
+    //     }
+    // }
 
  }
 export default new ProjectRepo(Projects);
