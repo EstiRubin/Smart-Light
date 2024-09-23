@@ -30,16 +30,16 @@ class BaseService {
 
     async add(data) {
         try {
-            return await this.repo.create(data);
+            return await this.repo.add(data);
         } catch (errors) {
             console.log(errors);
-            throw new Error("Unable to add new category.");
+            throw new Error("Something went wrong.");
         }
     }
     
     async update(id, data) {
         try {
-            let product = await this.model.findByIdAndUpdate(id, data, { new: true });
+            let product = await this.repo.update(id, data, { new: true });
             if (!product) {
                 let error = new Error('product not found');
                 error.statusCode = 404;
@@ -54,7 +54,7 @@ class BaseService {
 
     async delete(id) {
         try {
-            let product = await this.model.findByIdAndDelete(id);
+            let product = await this.repo.delete(id);
             if (!product) {
                 let error = new Error('product not found');
                 error.statusCode = 404;

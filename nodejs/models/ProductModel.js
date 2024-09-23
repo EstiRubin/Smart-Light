@@ -14,7 +14,7 @@ const ProductSchema = new Schema({
     IP: Number,
     DIM: String,
     beamAngle: String,
-})
+}, {versionKey: false});
 const Product = mongoose.model('products', ProductSchema);
 
 export default Product;

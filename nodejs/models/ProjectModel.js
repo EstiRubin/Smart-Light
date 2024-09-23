@@ -9,7 +9,7 @@ const ProjectSchema = new Schema({
     projectCreationDate: String,
     images: Array,
     combinedProducts: Array,
-});
+}, {versionKey: false});
 const Project = mongoose.model('projects', ProjectSchema);
 
 export default Project;
