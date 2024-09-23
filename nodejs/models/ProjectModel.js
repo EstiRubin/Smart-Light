@@ -7,9 +7,9 @@ const ProjectSchema = new Schema({
     nameOfProject: String,
     architect: String,
     projectCreationDate: String,
-    imags: Array,
+    images: Array,
     combinedProducts: Array,
-}, { versionKey: false });
-const ProjectModel = mongoose.model('ProjectsModel', ProjectSchema, 'ProjectsModel');
+});
+const Project = mongoose.model('projects', ProjectSchema);
 
-export default ProjectModel;
+export default Project;
