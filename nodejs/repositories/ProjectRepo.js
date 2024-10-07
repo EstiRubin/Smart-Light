@@ -10,13 +10,44 @@ class ProjectRepo extends BaseRepo{
         // connect();
         super(Projects);
     }
+    async getAll() {
+        try {
+            return await this.model.aggregate([
+                {
+                    $lookup: {
+                        from: 'products', // השם של קולקציית המוצרים
+                        let: { combinedProductsArray: "$combinedProducts" }, // מערך ה-IDs מהמוצרים
+                        pipeline: [
+                            {
+                                $match: {
+                                    $expr: { $in: ["$_id", "$$combinedProductsArray"] } // חיפוש לפי IDs במערך
+                                }
+                            }
+                        ],
+                        as: 'productDetails' // המידע המשויך יופיע תחת 'productDetails'
+                    },
+                    
+                },
+                {
+                        '$project': {
+                            '_id': 0,
+                            // 'combinedProducts': 0,
+                            // 'architect': 0,
+                            // 'projectCreationDate': 0,
+                            // 'imags': 0,
+                            // 'productDetails': 0,
+                        }
+                    }
 
-    // async getAll() {
-    //     const pipeline = buildPipeline();
-    //     const aggregationResult = await this.model.aggregate(pipeline).exec();
-    //     return aggregationResult;
-    //     // return await this.model.aggregate().exec();
-    // }
+            ]).exec();
+        } catch (error) {
+            console.log(error.message);
+            throw new Error('Something went wrong while fetching all projects');
+        }
+    }
+
+
+    
 
     // async getById(id) {
     //     try {
