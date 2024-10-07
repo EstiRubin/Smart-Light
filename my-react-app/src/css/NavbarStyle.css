@@ -1,0 +1,68 @@
+/* Navbar.css */
+.navbar {
+    display: flex;
+    align-items: center;
+    padding: 1rem;
+    background-color: #333; /* Change to your preferred color */
+  }
+  
+  .logo img {
+    height: 40px; /* Adjust logo size */
+    margin-right: 20px; /* Space between logo and links */
+  }
+  
+  .nav-links {
+    list-style: none;
+    display: flex;
+    gap: 30px; /* Space between links */
+  }
+  
+  .nav-links li {
+    display: inline;
+  }
+  
+  .nav-links a {
+    color: white; /* Change text color */
+    text-decoration: none; /* Remove underline */
+  }
+  
+  .nav-links a:hover {
+    text-decoration: underline; /* Underline on hover */
+  }
+  
+  /* Dropdown styles */
+  .dropdown {
+    position: relative; /* Position relative to allow absolute positioning of dropdown */
+  }
+  
+  .dropbtn {
+    color: white; /* Button text color */
+    text-decoration: none; /* Remove underline */
+    cursor: pointer; /* Pointer cursor on hover */
+  }
+  
+  /* Dropdown content (hidden by default) */
+  .dropdown-content {
+    display: none;
+    position: absolute; /* Positioning dropdown content */
+    background-color: #333; /* Background color */
+    min-width: 160px; /* Set minimum width */
+    z-index: 1; /* Ensure dropdown is above other content */
+  }
+  
+  /* Show dropdown on hover */
+  .dropdown:hover .dropdown-content {
+    display: block; /* Show dropdown on hover */
+  }
+  
+  .dropdown-content a {
+    color: white; /* Link color */
+    padding: 12px 16px; /* Padding for links */
+    text-decoration: none; /* Remove underline */
+    display: block; /* Display links as block */
+  }
+  
+  .dropdown-content a:hover {
+    background-color: #575757; /* Change background on hover */
+  }
+  
