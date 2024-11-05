@@ -10,6 +10,7 @@ const ProjectSchema = new Schema({
     images: Array,
     combinedProducts: Array,
 });
-const ProjectModel = mongoose.model('Project', ProjectSchema);
 
-export default ProjectModel;
+const Project = mongoose.model('projects', ProjectSchema);
+
+export default Project;

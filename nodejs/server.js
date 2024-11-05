@@ -3,6 +3,7 @@ import  express  from 'express';
 import projectRouter from './routers/ProjectRouter.js';
 import productRouter from './routers/ProductRouter.js';
 import categoryRouter from './routers/CategoryRouter.js';
+import userRouter from './routers/UserRouter.js';
 
 
 configDotenv()
@@ -14,6 +15,7 @@ app.use(express.json());
 app.use('/api/product', productRouter);
 app.use('/api/category', categoryRouter);
 app.use('/api/project', projectRouter);
+app.use('/api/user', userRouter);
 app.use('/', (req, res) => {
     res.send('welcome to smartLight platform! ⚡💡👋💡⚡');
 });
