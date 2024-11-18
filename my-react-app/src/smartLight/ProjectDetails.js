@@ -1,26 +1,39 @@
-
 import '../css/ProjectDetails.css';
-
-
-
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import { useParams } from 'react-router-dom';
+import { useParams, Link } from 'react-router-dom';
 import Card from 'react-bootstrap/Card';
 
 const ProjectDetails = () => {
-    const { id } = useParams();
+    const { id } = useParams(); // מזהה הפרויקט מהנתיב
     const [project, setProject] = useState(null);
+    const [product, setProduct] = useState(null);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
     const [currentImageIndex, setCurrentImageIndex] = useState(0);
 
-    const API_URL = `http://localhost:3000/api/project/${id}`;
+    const API_URL = `http://localhost:3000/api/project/${id}`; // כתובת ה-API
+    const API_URL_PRODUCT = `http://localhost:3000/api/product`; // כתובת ה-API
 
     useEffect(() => {
         axios.get(API_URL)
             .then((response) => {
                 setProject(response.data);
+                console.log(response.data);
+                setLoading(false);
+            })
+            .catch((error) => {
+                setError(error);
+                setLoading(false);
+            });
+    }, [id]);
+
+    useEffect(() => {
+        axios.get(API_URL_PRODUCT)
+            .then((response) => {
+                setProduct(response.data);
+                console.log(response.data);
+                console.log(response.data[0].nameOfProduct);
                 setLoading(false);
             })
             .catch((error) => {
@@ -52,7 +65,7 @@ const ProjectDetails = () => {
 
     return (
         <div className="project-details-container">
-            {project && project.images && (
+            {project && (
                 <>
                     {/* Left Side - Main Image */}
                     <div className="carousel-container">
@@ -98,41 +111,50 @@ const ProjectDetails = () => {
                                 ))}
                             </div>
                         </div>
-
-                        {/* Product Cards */}
                         <div className="product-cards">
-                            <h2>Integrated Products</h2>
-                            <div className="product-card-container">
-                                {project.combinedProducts && project.combinedProducts.map((product, index) => (
-                                    <Card key={product._id} className="product-card">
-                                        <Card.Body>
-                                            <Card.Title>{product.nameOfProduct}</Card.Title>
-                                            <Card.Text>
-                                                <strong>Price:</strong> {product.price}<br />
-                                                <strong>Watt:</strong> {product.watt}<br />
-                                                <strong>Colors:</strong> {product.colors}<br />
-                                                <strong>Light Colors:</strong> {product.lightColors}<br />
-                                                <strong>Beam Angle:</strong> {product.beamAngle}<br />
-                                                <strong>IP Rating:</strong> {product.IP}<br />
-                                                <strong>Dimmable:</strong> {product.DIM}<br />
-                                            </Card.Text>
-                                            {product.imags && product.imags.length > 0 && (
-                                                <div className="product-images">
-                                                    {product.imags.map((img, idx) => (
-                                                        <img
-                                                            key={idx}
-                                                            src={img}
-                                                            alt={`Product Image ${idx + 1}`}
-                                                            className="product-thumbnail"
-                                                        />
-                                                    ))}
-                                                </div>
-                                            )}
-                                        </Card.Body>
-                                    </Card>
-                                ))}
-                            </div>
-                        </div>
+    <h2>Integrated Products</h2>
+    <div className="product-card-container">
+        {project.combinedProducts &&
+            project.combinedProducts.map((p, index) => {
+                // בדיקת האם המידע זמין
+                const currentProduct = product && product[index]; // או דרך אחרת לגשת למוצר
+                if (!currentProduct) {
+                    return (
+                        <Card key={index} className="product-card">
+                            <Card.Body>
+                                <Card.Title>Unknown Product</Card.Title>
+                                <Card.Text>No data available</Card.Text>
+                            </Card.Body>
+                        </Card>
+                    );
+                }
+                return (
+                    <Link
+                        key={currentProduct._id}
+                        to={`/products/${currentProduct._id}`}
+                        className="product-card-link"
+                    >
+                        <Card className="product-card">
+                            <Card.Img
+                                variant="top"
+                                src={currentProduct.images && currentProduct.images[0]}
+                                alt={currentProduct.nameOfProduct || "Product Image"}
+                                className="product-thumbnail"
+                            />
+                            <Card.Body>
+                                <Card.Title>{currentProduct.nameOfProduct || "Unknown Product"}</Card.Title>
+                                <Card.Text>
+                                    <strong>Price:</strong> {currentProduct.price || "N/A"} ₪
+                                </Card.Text>
+                            </Card.Body>
+                        </Card>
+                    </Link>
+                );
+            })}
+    </div>
+</div>
+
+                        
                     </div>
                 </>
             )}
