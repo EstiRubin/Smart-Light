@@ -42,8 +42,17 @@ import React, { useEffect, useState } from 'react';
 import L from 'leaflet';
 import 'leaflet/dist/leaflet.css';
 
+delete L.Icon.Default.prototype._getIconUrl;
+
+L.Icon.Default.mergeOptions({
+    iconRetinaUrl: require('leaflet/dist/images/marker-icon-2x.png'),
+    iconUrl: require('leaflet/dist/images/marker-icon.png'),
+    shadowUrl: require('leaflet/dist/images/marker-shadow.png'),
+});
+
 const Contact = () => {
     const [coordinates, setCoordinates] = useState({ lat: 31.7969, lng: 35.2134 }); // ערכים ברירת מחדל
+    const whatsappNumber = "972527134164"; // מספר WhatsApp שלך
 
     useEffect(() => {
         // בקשת גיאוקודינג לכתובת
@@ -75,7 +84,7 @@ const Contact = () => {
             maxZoom: 19,
         }).addTo(map);
 
-        // הוספת סמן במיקום
+        // הוספת סמן רגיל במיקום המרכזי
         L.marker([coordinates.lat, coordinates.lng]).addTo(map);
 
         return () => {
@@ -87,7 +96,37 @@ const Contact = () => {
 
     return (
         <div>
-            <h1>המיקום שלנו</h1>
+            {/* אייקון טלפון עם מספר */}
+            <div style={{ display: 'flex', alignItems: 'center', marginBottom: '10px' }}>
+                <i
+                    className="fas fa-phone"
+                    style={{ color: 'blue', fontSize: '24px', marginRight: '8px' }}
+                ></i>
+                <span style={{ fontSize: '18px', fontWeight: 'bold', color: '#333' }}>
+                    02-5712483
+                </span>
+            </div>
+
+            {/* כפתור WhatsApp */}
+            <a
+                href={`https://wa.me/${whatsappNumber}?text=שלום!%20אני%20מתעניין/ת%20בתאורה%20אפשר%20לקבל%20פרטים%20נוספים?`}
+                target="_blank"
+                rel="noopener noreferrer"
+                style={{
+                    display: 'inline-block',
+                    backgroundColor: '#25D366',
+                    color: 'white',
+                    padding: '10px 20px',
+                    borderRadius: '5px',
+                    textDecoration: 'none',
+                    fontWeight: 'bold',
+                    marginBottom: '20px',
+                }}
+            >
+                שלח הודעה ב-WhatsApp
+            </a>
+
+            {/* המפה */}
             <div id="map" style={{ width: '100%', height: '400px' }}></div>
         </div>
     );
