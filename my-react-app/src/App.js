@@ -3,10 +3,13 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import About from './smartLight/About';
 import AllProducts from './smartLight/AllProducts';
 import Contact from './smartLight/Contact';
-import Home from './smartLight/Home'; 
+import Home from './smartLight/Home';
 import Navbar from './smartLight/Navbar';
 import Product from './smartLight/Product';
 import Projects from './smartLight/Projects';
+import ApiComponent from './smartLight/Projects';
+import ProjectDetails from './smartLight/ProjectDetails';
+import ProductDetails from './smartLight/ProductDetails';
 
 
 function App() {
@@ -21,9 +24,12 @@ function App() {
           <Route exact path="/Contact" element={<Contact></Contact>} />
           <Route exact path="/Product" element={<Product></Product>} />
           <Route exact path="/Projects" element={<Projects></Projects>} />
+          <Route path="/" element={<ApiComponent />} />
+          <Route path="/project/:id" element={<ProjectDetails />} />
+          <Route path="/projects/:id" element={<ProjectDetails />} />
+          <Route path="/products/:id" element={<ProductDetails />} />
         </Routes>
       </BrowserRouter>
-        
 
     </>
   );

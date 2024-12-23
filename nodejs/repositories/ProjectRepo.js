@@ -15,32 +15,44 @@ class ProjectRepo extends BaseRepo{
             return await this.model.aggregate([
                 {
                     $lookup: {
-                        from: 'products', // השם של קולקציית המוצרים
-                        let: { combinedProductsArray: "$combinedProducts" }, // מער
-                        let: { combinedProductsArrayfirst:  { $arrayElemAt: [ "$combinedProducts", 0 ] }},
-                        pipeline: [                       
-                            
-
-                           , {
+                        from: 'products', // שם קולקציית המוצרים
+                        let: { combinedProductsArray: "$combinedProducts" }, // המערך עם מזהי המוצרים
+                        pipeline: [
+                            {
                                 $match: {
-                                    $expr: { $in: ["$combinedProductsArrayfirst", "$$combinedProductsArray"] } // חיפוש לפי IDs במערך
+                                    $expr: { $in: ["$_id", "$$combinedProductsArray"] } // חיפוש המסמכים לפי מזהים ב-combinedProducts
                                 }
                             }
                         ],
-                        as: 'productDetails' // המידע המשויך יופיע תחת 'productDetails'
-                    },
-                    
-                },
-                {
-                        '$project': {
-                            '_id': 0,
-                            // 'combinedProducts': 0,
-                            // 'architect': 0,
-                            // 'projectCreationDate': 0,
-                            // 'imags': 0,
-                            // 'productDetails': 0,
-                        }
+                        as: 'combinedProducts' // החלפת המערך במידע המלא מ-products
                     }
+                }
+                
+                // {
+                //     $lookup: {
+                //         from: 'products', // השם של קולקציית המוצרים
+                //         let: { combinedProductsArray: "$combinedProducts" }, // מערך ה-IDs מהמוצרים
+                //         pipeline: [
+                //             {
+                //                 $match: {
+                //                     $expr: { $in: ["$_id", "$$combinedProductsArray"] } // חיפוש לפי IDs במערך
+                //                 }
+                //             }
+                //         ],
+                //         as: 'productDetails' // המידע המשויך יופיע תחת 'productDetails'
+                //     },
+                    
+                // },
+                // // {
+                //         // '$project': {
+                //         //     '_id': 0,
+                //         //     // 'combinedProducts': 0,
+                //         //     // 'architect': 0,
+                //         //     // 'projectCreationDate': 0,
+                //         //     // 'imags': 0,
+                //         //     // 'productDetails': 0,
+                //         // }
+                //     // }
 
             ]).exec();
         } catch (error) {
