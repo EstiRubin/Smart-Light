@@ -30,6 +30,10 @@ function App() {
           <Route path="/projects/:id" element={<ProjectDetails />} />
           <Route path="/product/:id" element={<Product />} />
 
+
+          <Route path="/email-input" element={<EmailInputPage />} />
+        <Route path="/verify-code" element={<CodeVerificationPage />} />
+        
         </Routes>
       </BrowserRouter>
 

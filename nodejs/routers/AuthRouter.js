@@ -1,6 +1,8 @@
 import express from "express";
 import User from "../models/UserModel.js";
 import { generateCode, sendEmail } from "../Util/emailUtils.js";
+import passport from "passport";
+import { googleAuthRedirect, getCurrentUser } from "../controllers/AuthController.js";
 
 const router = express.Router();
 
@@ -42,5 +44,16 @@ router.post("/verify-code", async (req, res) => {
 
     res.send("Code verified successfully");
 });
+
+router.get("/google", passport.authenticate("google", { scope: ["profile", "email"] }));
+
+router.get(
+  "/google/callback",
+  passport.authenticate("google", { failureRedirect: "/" }),
+  googleAuthRedirect
+);
+
+router.get("/current-user", getCurrentUser);
+
 
 export default router;
