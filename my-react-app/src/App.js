@@ -9,9 +9,9 @@ import Product from './smartLight/Product';
 import Projects from './smartLight/Projects';
 import ApiComponent from './smartLight/Projects';
 import ProjectDetails from './smartLight/ProjectDetails';
-import ProductDetails from './smartLight/ProductDetails';
+import EmailInputPage from './smartLight/Auth/pages1/EmailInputPage';
+import CodeVerificationPage from './smartLight/Auth/pages1/CodeVerificationPage';
 import Cart from './smartLight/Cart';
-
 
 function App() {
   return (
@@ -19,17 +19,23 @@ function App() {
       <BrowserRouter>
         <Navbar></Navbar>
         <Routes>
-          <Route exact path="/" element={<Home></Home>} />
-          <Route exact path="/About" element={<About></About>} />
+        {/* <Route exact path="/" element={<Home></Home>} /> */}
+        <Route path="/" element={<EmailInputPage />} />
+                <Route path="/verify-code" element={<CodeVerificationPage />} />
+                 <Route exact path="/About" element={<About></About>} />
           <Route exact path="/AllProducts" element={<AllProducts></AllProducts>} />
           <Route exact path="/Contact" element={<Contact></Contact>} />
-          <Route exact path="/Product" element={<Product></Product>} />
           <Route exact path="/Projects" element={<Projects></Projects>} />
           <Route path="/" element={<ApiComponent />} />
           <Route path="/project/:id" element={<ProjectDetails />} />
           <Route path="/projects/:id" element={<ProjectDetails />} />
-          <Route path="/products/:id" element={<ProductDetails />} />
-          <Route exact path="/Cart" element={<Cart />} />
+          <Route path="/product/:id" element={<Product />} />
+
+
+          <Route path="/email-input" element={<EmailInputPage />} />
+        <Route path="/verify-code" element={<CodeVerificationPage />} />
+        <Route exact path="/Cart" element={<Cart />} />
+        
         </Routes>
       </BrowserRouter>
 

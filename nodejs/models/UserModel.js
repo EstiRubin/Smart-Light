@@ -1,16 +1,12 @@
-import mongoose from 'mongoose';
+import mongoose from "mongoose";
 
 const Schema = mongoose.Schema;
 
 const UserSchema = new Schema({
-    _id: Number,
-    firstName: String,
-    lastName: String,
-    phone: String,
-    password: String,
-    role: String,
     email: String,
-});
+    verificationCode: String,
+    codeExpiration: Date,
+}, { versionKey: false });
 
 const User = mongoose.model('users', UserSchema);
 

@@ -1,6 +1,5 @@
 import BaseRepo from "./BaseRepo.js";
-import User from "../models/UserModel.js";
-
+import User from '../models/UserModel.js'
 class UserRepo extends BaseRepo {
     constructor(model) {
         super(User);

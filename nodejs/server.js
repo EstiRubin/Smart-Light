@@ -7,7 +7,12 @@ import categoryRouter from './routers/CategoryRouter.js';
 import userRouter from './routers/UserRouter.js';
 import cartRouter from './routers/CartRouter.js';
 import recommendationRouter from './routers/RecommendationRouter.js';
+import dotenv from 'dotenv';
+import authRoutes from './routers/AuthRouter.js'
+import session from "express-session";
+import passport from 'passport';
 
+dotenv.config();
 
 configDotenv();
 const app = express();
@@ -20,6 +25,11 @@ app.use(cors({
 }));
 
 app.use(express.json());
+
+// Routes
+app.use('/api/auth', authRoutes);
+
+app.use('/api', authRoutes);
 app.use('/api/product', productRouter);
 app.use('/api/category', categoryRouter);
 app.use('/api/project', projectRouter);
@@ -31,6 +41,17 @@ app.use('/', (req, res) => {
     res.send('Welcome to SmartLight platform! ⚡💡👋💡⚡');
 });
 
+app.use(
+    session({
+      secret: process.env.SESSION_SECRET,
+      resave: false,
+      saveUninitialized: true,
+    })
+  );
+  
+  app.use(passport.initialize());
+  app.use(passport.session());
+  
 app.listen(port, hostname, () => {
     console.log(`Server running at http://${hostname}:${port}/`);
 });
