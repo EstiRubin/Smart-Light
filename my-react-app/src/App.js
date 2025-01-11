@@ -10,6 +10,7 @@ import Projects from './smartLight/Projects';
 import ApiComponent from './smartLight/Projects';
 import ProjectDetails from './smartLight/ProjectDetails';
 import ProductDetails from './smartLight/ProductDetails';
+import Cart from './smartLight/Cart';
 
 
 function App() {
@@ -28,6 +29,7 @@ function App() {
           <Route path="/project/:id" element={<ProjectDetails />} />
           <Route path="/projects/:id" element={<ProjectDetails />} />
           <Route path="/products/:id" element={<ProductDetails />} />
+          <Route exact path="/Cart" element={<Cart />} />
         </Routes>
       </BrowserRouter>
 

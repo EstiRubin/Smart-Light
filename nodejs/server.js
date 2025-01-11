@@ -5,6 +5,7 @@ import projectRouter from './routers/ProjectRouter.js';
 import productRouter from './routers/ProductRouter.js';
 import categoryRouter from './routers/CategoryRouter.js';
 import userRouter from './routers/UserRouter.js';
+import cartRouter from './routers/CartRouter.js';
 import recommendationRouter from './routers/RecommendationRouter.js';
 
 
@@ -23,6 +24,7 @@ app.use('/api/product', productRouter);
 app.use('/api/category', categoryRouter);
 app.use('/api/project', projectRouter);
 app.use('/api/user', userRouter);
+app.use('/api/cart', cartRouter);
 app.use('/api/recommendation', recommendationRouter);
 
 app.use('/', (req, res) => {

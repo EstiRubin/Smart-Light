@@ -36,6 +36,9 @@ export default function Navbar() {
           <li class="nav-item" role="presentation">
             <Link to="/Contact">Contact Us</Link>
           </li>
+          <li class="nav-item" role="presentation">
+            <Link to="/Cart">Cart</Link>
+          </li>
         </ul>
       </nav>
     </>
