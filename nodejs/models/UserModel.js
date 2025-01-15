@@ -10,6 +10,10 @@ const UserSchema = new Schema({
     password: String,
     role: String,
     email: String,
+    tokens: {
+        type: Object, // Store access token, refresh token, and expiry info
+        default: null,
+    },
 });
 
 const User = mongoose.model('users', UserSchema);
