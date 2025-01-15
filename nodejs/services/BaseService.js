@@ -33,6 +33,7 @@ class BaseService {
             return await this.repo.add(data);
         } catch (errors) {
             console.log(errors);
+            console.log(req.body);
             throw new Error("Something went wrong.");
         }
     }
