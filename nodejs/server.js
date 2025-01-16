@@ -6,7 +6,10 @@ import productRouter from './routers/ProductRouter.js';
 import categoryRouter from './routers/CategoryRouter.js';
 import userRouter from './routers/UserRouter.js';
 import recommendationRouter from './routers/RecommendationRouter.js';
+import dotenv from 'dotenv';
+import authRoutes from './routers/AuthRouter.js'
 
+dotenv.config();
 
 configDotenv();
 const app = express();
@@ -19,6 +22,11 @@ app.use(cors({
 }));
 
 app.use(express.json());
+
+// Routes
+app.use('/api/auth', authRoutes);
+
+app.use('/api', authRoutes);
 app.use('/api/product', productRouter);
 app.use('/api/category', categoryRouter);
 app.use('/api/project', projectRouter);
