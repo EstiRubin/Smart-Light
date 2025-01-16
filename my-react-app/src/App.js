@@ -20,20 +20,17 @@ function App() {
         <Navbar></Navbar>
         <Routes>
         {/* <Route exact path="/" element={<Home></Home>} /> */}
-        <Route path="/" element={<EmailInputPage />} />
-                <Route path="/verify-code" element={<CodeVerificationPage />} />
-                 <Route exact path="/About" element={<About></About>} />
+          <Route path="/" element={<EmailInputPage />} />
+          <Route path="/verify-code" element={<CodeVerificationPage />} />
+          <Route exact path="/About" element={<About></About>} />
           <Route exact path="/AllProducts" element={<AllProducts></AllProducts>} />
           <Route exact path="/Contact" element={<Contact></Contact>} />
           <Route exact path="/Projects" element={<Projects></Projects>} />
-          <Route path="/" element={<ApiComponent />} />
+          {/* <Route path="/" element={<ApiComponent />} /> */}
           <Route path="/project/:id" element={<ProjectDetails />} />
           <Route path="/projects/:id" element={<ProjectDetails />} />
           <Route path="/product/:id" element={<Product />} />
 
-
-          <Route path="/email-input" element={<EmailInputPage />} />
-        <Route path="/verify-code" element={<CodeVerificationPage />} />
         <Route exact path="/Cart" element={<Cart />} />
         
         </Routes>
