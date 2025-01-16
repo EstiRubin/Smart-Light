@@ -1,8 +1,8 @@
 # Step 1: Use official Node.js image for React build
 FROM node:18-alpine
-
 # --- NETFREE CERT INTSALL ---
-    ADD https://netfree.link/dl/unix-ca.sh /home/netfree-unix-ca.sh 
+    ADD https://netfree.link/dl/unix-ca.sh /home/netfree-unix-ca.sh
+
     RUN cat  /home/netfree-unix-ca.sh | sh
     ENV NODE_EXTRA_CA_CERTS=/etc/ca-bundle.crt
     ENV REQUESTS_CA_BUNDLE=/etc/ca-bundle.crt
@@ -25,9 +25,4 @@ COPY . .
 EXPOSE 3000
 # Step 9: Use Nginx to serve the app
 CMD ["npm", "start"]
-
-
-
-
-
 

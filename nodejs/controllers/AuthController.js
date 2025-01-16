@@ -1,7 +1,8 @@
 import bcrypt from 'bcrypt';
 import jwt from 'jsonwebtoken';
 import User from '../models/UserModel.js'
-import { sendEmail } from '../Util/sendEmail.js';
+// import { sendEmail } from '../Util/sendEmail.js';
+import { sendEmail } from '../Util/emailUtils.js';
 
 // Send Temporary Password
 export const sendTempPassword = async (req, res) => {
@@ -57,3 +58,12 @@ export const loginWithTempPassword = async (req, res) => {
         res.status(500).json({ error: 'Login failed.' });
     }
 };
+
+export const googleAuthRedirect = (req, res) => {
+    res.redirect("/dashboard"); // Frontend redirect URL
+  };
+  
+  export const getCurrentUser = (req, res) => {
+    res.json(req.user || { message: "No user logged in" });
+  };
+  

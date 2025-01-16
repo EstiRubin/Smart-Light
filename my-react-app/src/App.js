@@ -11,6 +11,7 @@ import ApiComponent from './smartLight/Projects';
 import ProjectDetails from './smartLight/ProjectDetails';
 import EmailInputPage from './smartLight/Auth/pages1/EmailInputPage';
 import CodeVerificationPage from './smartLight/Auth/pages1/CodeVerificationPage';
+import Cart from './smartLight/Cart';
 
 function App() {
   return (
@@ -30,6 +31,11 @@ function App() {
           <Route path="/projects/:id" element={<ProjectDetails />} />
           <Route path="/product/:id" element={<Product />} />
 
+
+          <Route path="/email-input" element={<EmailInputPage />} />
+        <Route path="/verify-code" element={<CodeVerificationPage />} />
+        <Route exact path="/Cart" element={<Cart />} />
+        
         </Routes>
       </BrowserRouter>
 
