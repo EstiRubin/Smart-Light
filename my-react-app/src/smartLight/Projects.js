@@ -10,7 +10,7 @@ const ApiComponent = () => {
     const [error, setError] = useState(null);
     const navigate = useNavigate();
 
-    const API_URL = 'http://localhost:3000/api/project';
+    const API_URL = 'http://localhost:3001/api/project';
 
     // GET request to fetch data
     useEffect(() => {

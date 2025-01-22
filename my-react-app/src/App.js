@@ -12,21 +12,22 @@ import ProjectDetails from './smartLight/ProjectDetails';
 import EmailInputPage from './smartLight/Auth/pages1/EmailInputPage';
 import CodeVerificationPage from './smartLight/Auth/pages1/CodeVerificationPage';
 import Cart from './smartLight/Cart';
-
+import whatsapp from './img/whatsapp.png'
+import  './css/whatsapp.css'
 function App() {
+  const whatsappNumber = "972500000000";
   return (
     <>
       <BrowserRouter>
         <Navbar></Navbar>
         <Routes>
-        {/* <Route exact path="/" element={<Home></Home>} /> */}
+        <Route exact path="/home" element={<Home></Home>} />
           <Route path="/" element={<EmailInputPage />} />
           <Route path="/verify-code" element={<CodeVerificationPage />} />
           <Route exact path="/About" element={<About></About>} />
           <Route exact path="/AllProducts" element={<AllProducts></AllProducts>} />
           <Route exact path="/Contact" element={<Contact></Contact>} />
           <Route exact path="/Projects" element={<Projects></Projects>} />
-          {/* <Route path="/" element={<ApiComponent />} /> */}
           <Route path="/project/:id" element={<ProjectDetails />} />
           <Route path="/projects/:id" element={<ProjectDetails />} />
           <Route path="/product/:id" element={<Product />} />
@@ -35,6 +36,18 @@ function App() {
         
         </Routes>
       </BrowserRouter>
+      <a
+      href={`https://wa.me/${whatsappNumber}?text=שלום!%20אני%20מתעניין/ת%20בתאורה%20אפשר%20לקבל%20פרטים%20נוספים?`}
+      target="_blank"
+      rel="noopener noreferrer"
+      className="whatsapp-floating-button"
+    >
+      <img
+        src={whatsapp}
+        alt="WhatsApp Icon"
+        className="whatsapp-icon"
+      />
+    </a>
 
     </>
   );

@@ -1,0 +1,27 @@
+.whatsapp-floating-button {
+    position: fixed; /* כפתור צף */
+    bottom: 20px; /* מרחק מתחתית המסך */
+    right: 20px; /* מרחק מצד ימין */
+    background-color: #25d366; /* צבע רקע */
+    border-radius: 50%; /* עיגול */
+    width: 60px; /* גודל הכפתור */
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2); /* צל */
+    z-index: 1000; /* מעל כל האלמנטים */
+    cursor: pointer; /* מצביע יד */
+    transition: transform 0.3s ease, background-color 0.3s ease; /* אפקט מעבר */
+  }
+  
+  .whatsapp-floating-button:hover {
+    background-color: #1eb75c; /* צבע בעת ריחוף */
+    transform: scale(1.1); /* אפקט זום */
+  }
+  
+  .whatsapp-icon {
+    width: 45px; /* גודל האייקון */
+    height: 45px;
+  }
+  

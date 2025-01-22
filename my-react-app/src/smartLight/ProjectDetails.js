@@ -12,8 +12,8 @@ const ProjectDetails = () => {
     const [error, setError] = useState(null);
     const [currentImageIndex, setCurrentImageIndex] = useState(0);
 
-    const API_URL = `http://localhost:3000/api/project/${id}`; // כתובת ה-API
-    const API_URL_PRODUCT = `http://localhost:3000/api/product`; // כתובת ה-API
+    const API_URL = `http://localhost:3001/api/project/${id}`; // כתובת ה-API
+    const API_URL_PRODUCT = `http://localhost:3001/api/product`; // כתובת ה-API
 
     useEffect(() => {
         axios.get(API_URL)

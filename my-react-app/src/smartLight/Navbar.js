@@ -11,6 +11,13 @@ export default function Navbar() {
     <>
       <nav className="navbar">
         <ul className="nav-links">
+          
+          <li className="nav-item" role="presentation">
+            <Link to="/home">בית</Link>
+          </li>
+          <li className="nav-item" role="presentation">
+            <Link to="/AllProducts">מוצרים</Link>
+          </li>
           <li className="nav-item">
             <div className="dropdown">
               <a className="dropbtn">קטגוריות</a>
@@ -20,12 +27,6 @@ export default function Navbar() {
                 <Link to="/AllProducts">Fixture 3</Link>
               </div>
             </div>
-          </li>
-          <li className="nav-item" role="presentation">
-            <Link to="/">בית</Link>
-          </li>
-          <li className="nav-item" role="presentation">
-            <Link to="/AllProducts">מוצרים</Link>
           </li>
           <li className="nav-item" role="presentation">
             <Link to="/Projects">פרויקטים</Link>

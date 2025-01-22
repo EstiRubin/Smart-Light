@@ -7,8 +7,8 @@ const Cart = () => {
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
 
-    const API_URL = "http://localhost:3000/api/cart";
-    const EMAIL_API_URL = "http://localhost:3000/api/cart/send-email";
+    const API_URL = "http://localhost:3001/api/cart";
+    const EMAIL_API_URL = "http://localhost:3001/api/cart/send-email";
 
     useEffect(() => {
         axios.get(API_URL)

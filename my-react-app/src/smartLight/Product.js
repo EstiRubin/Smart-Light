@@ -10,7 +10,7 @@ const ProductDetail = () => {
 //   const dispatch = useDispatch();
 
   useEffect(() => {
-    axios.get(`http://localhost:3000/api/product/${id}`)
+    axios.get(`http://localhost:3001/api/product/${id}`)
       .then(response => setProduct(response.data))
       .catch(error => console.error(error));
   }, [id]);
