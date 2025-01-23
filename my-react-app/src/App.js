@@ -11,12 +11,14 @@ import ApiComponent from './smartLight/Projects';
 import ProjectDetails from './smartLight/ProjectDetails';
 import EmailInputPage from './smartLight/Auth/pages1/EmailInputPage';
 import CodeVerificationPage from './smartLight/Auth/pages1/CodeVerificationPage';
+import Footer from './smartLight/Footer.js';
 
 function App() {
   return (
     <>
       <BrowserRouter>
         <Navbar></Navbar>
+       
         <Routes>
         {/* <Route exact path="/" element={<Home></Home>} /> */}
         <Route path="/" element={<EmailInputPage />} />
@@ -25,7 +27,7 @@ function App() {
           <Route exact path="/AllProducts" element={<AllProducts></AllProducts>} />
           <Route exact path="/Contact" element={<Contact></Contact>} />
           <Route exact path="/Projects" element={<Projects></Projects>} />
-          <Route path="/" element={<ApiComponent />} />
+          <Route path="/home" element={<ApiComponent />} />
           <Route path="/project/:id" element={<ProjectDetails />} />
           <Route path="/projects/:id" element={<ProjectDetails />} />
           <Route path="/product/:id" element={<Product />} />
@@ -35,6 +37,7 @@ function App() {
         <Route path="/verify-code" element={<CodeVerificationPage />} />
         
         </Routes>
+        <Footer></Footer>
       </BrowserRouter>
 
     </>
