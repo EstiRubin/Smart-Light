@@ -13,7 +13,7 @@ export default function Navbar() {
         <ul className="nav-links">
           
           <li className="nav-item" role="presentation">
-            <Link to="/home">בית</Link>
+            <Link to="/">בית</Link>
           </li>
           <li className="nav-item" role="presentation">
             <Link to="/AllProducts">מוצרים</Link>
@@ -38,7 +38,7 @@ export default function Navbar() {
             <Link to="/Contact">צור קשר</Link>
           </li>
           <li className="nav-item" role="presentation">
-            <Link to="/Cart">Cart</Link>
+            <Link to="/Cart">לעגלה שלי</Link>
           </li>
         </ul>
         <img 

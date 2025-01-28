@@ -1,15 +1,13 @@
 import mongoose from "mongoose";
 
-const Schema = mongoose.Schema;
-
-const UserSchema = new Schema({
-    email: String,
-    tokens: {
-        type: Object, // Store access token, refresh token, and expiry info
-        default: null,
-    },
+const userSchema = new mongoose.Schema({
+  email: { type: String, required: true, unique: true },
+  googleId: { type: String },
+  tempPassword: { type: String },
+  tempPasswordExpires: { type: Date },
+  verificationCode: { type: String },
+  codeExpiration: { type: Date },
 });
 
-const User = mongoose.model('users', UserSchema);
+export default mongoose.model('users', userSchema);
 
-export default User;

@@ -6,6 +6,7 @@ class CartController extends BaseController {
         super(service);  
         this.type = "cart";      
     }
+    
 
     async addItem(req, res, next) {
         const { cartId, productId, quantity, customization } = req.body;
@@ -38,7 +39,7 @@ class CartController extends BaseController {
     }
     
 
-    async sendCartToEmail(req, res, next) {
+    async sendCartToEmailInController(req, res, next) {
         const { cartId, email } = req.body;
         try {
             await this.service.sendCartToEmail(cartId, email);

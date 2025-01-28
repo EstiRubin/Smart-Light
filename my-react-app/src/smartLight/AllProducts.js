@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
-
+import "../css/ALLproduct.css"
 const ProductList = () => {
   const [products, setProducts] = useState([]);
 
@@ -12,42 +12,23 @@ const ProductList = () => {
   }, []);
 
   return (
-    <div>
-      <h1>Product Showcase</h1>
-      <div style={{ display: 'flex', flexWrap: 'wrap', gap: '20px' }}>
+    <div className="product-list-container">
+      <div className="product-cards-container">
         {products.map(product => (
-          <div 
-            key={product._id} 
-            style={{
-              border: "1px solid #ccc",
-              borderRadius: "10px",
-              padding: "20px",
-              width: "300px",
-              textAlign: "center",
-              boxShadow: "0 4px 8px rgba(0, 0, 0, 0.1)"
-            }}
-          >
-            <h2>{product.nameOfProduct}</h2>
-            <div style={{ marginBottom: "10px" }}>
+          <div key={product._id} className="product-card">
+            <h2 className="product-name">{product.nameOfProduct}</h2>
+            <div className="product-image-container">
               <img 
                 src={product.images[0]} 
                 alt={product.nameOfProduct} 
-                style={{ width: "100%", borderRadius: "10px" }}
+                className="product-image" 
               />
             </div>
-            <p>Price: {product.price.join(", ")}₪</p>
-            <p>Watt: {product.watt.join(", ")}</p>
+            <p className="product-price">Price: {product.price.join(", ")}₪</p>
+            <p className="product-watt">Watt: {product.watt.join(", ")}</p>
             <Link 
               to={`/product/${product._id}`} 
-              style={{
-                display: "inline-block",
-                marginTop: "10px",
-                padding: "10px 20px",
-                backgroundColor: "#007BFF",
-                color: "#fff",
-                textDecoration: "none",
-                borderRadius: "5px"
-              }}
+              className="view-details-btn"
             >
               View Details
             </Link>

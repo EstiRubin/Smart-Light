@@ -131,7 +131,7 @@ const ProjectDetails = () => {
                 return (
                     <Link
                         key={currentProduct._id}
-                        to={`/products/${currentProduct._id}`}
+                        to={`/product/${currentProduct._id}`}
                         className="product-card-link"
                     >
                         <Card className="product-card">

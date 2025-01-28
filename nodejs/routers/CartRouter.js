@@ -19,6 +19,6 @@ router.delete("/delete-item", CartController.deleteItem);
 
 router.post("/update-item", CartController.updateItem);
 
-router.post("/send-email", CartController.sendCartToEmail);
+router.post("/send-email", CartController.sendCartToEmailInController);
 
 export default router;

@@ -1,0 +1,80 @@
+.product-list-container {
+  width: 100%;
+  padding: 20px;
+  background-color: #f9f9f9; /* רקע בהיר שיבליט את המוצרים */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.product-cards-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center;
+}
+
+.product-card {
+  background-color: #fff; /* רקע לבן */
+  border-radius: 15px; /* פינות מעוגלות */
+  width: 280px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* הצללה רכה */
+  overflow: hidden; /* להסתיר כל דבר שיוצא מגבולות הקארד */
+  transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+  cursor: pointer;
+}
+
+.product-card:hover {
+  transform: translateY(-10px); /* אפקט של ריחוף מעלה */
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15); /* הצללה חזקה יותר בריחוף */
+}
+
+.product-image-container {
+  height: 180px;
+  width: 100%;
+  overflow: hidden;
+}
+
+.product-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* מכסה את התמונה בצורה מדויקת */
+  transition: transform 0.3s ease-in-out;
+}
+
+.product-card:hover .product-image {
+  transform: scale(1.1); /* הגדלת התמונה קצת בריחוף */
+}
+
+.product-name {
+  font-size: 20px;
+  font-weight: bold;
+  color: #333;
+  margin: 10px 0;
+  text-align: center;
+}
+
+.product-price, .product-watt {
+  font-size: 16px;
+  color: #666;
+  text-align: center;
+  margin: 5px 0;
+}
+
+.view-details-btn {
+  display: block;
+  margin-top: 15px;
+  padding: 10px;
+  background-color: #00aaff; /* צבע תכלת */
+  color: #fff;
+  text-align: center;
+  font-size: 16px;
+  text-decoration: none;
+  border-radius: 5px;
+  transition: background-color 0.3s ease;
+}
+
+.view-details-btn:hover {
+  background-color: #0088cc; /* גוון כהה יותר כשהכפתור מרחף */
+}

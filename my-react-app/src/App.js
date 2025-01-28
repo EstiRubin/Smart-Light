@@ -7,13 +7,13 @@ import Home from './smartLight/Home';
 import Navbar from './smartLight/Navbar';
 import Product from './smartLight/Product';
 import Projects from './smartLight/Projects';
-import ApiComponent from './smartLight/Projects';
 import ProjectDetails from './smartLight/ProjectDetails';
-import EmailInputPage from './smartLight/Auth/pages1/EmailInputPage';
-import CodeVerificationPage from './smartLight/Auth/pages1/CodeVerificationPage';
 import Cart from './smartLight/Cart';
 import whatsapp from './img/whatsapp.png'
 import  './css/whatsapp.css'
+import Footer from './smartLight/Footer';
+import EmailInputPage from './smartLight/Auth/EmailInputPage';
+import CodeVerificationPage from './smartLight/Auth/CodeVerificationPage';
 function App() {
   const whatsappNumber = "972500000000";
   return (
@@ -21,16 +21,19 @@ function App() {
       <BrowserRouter>
         <Navbar></Navbar>
         <Routes>
-        <Route exact path="/home" element={<Home></Home>} />
-          <Route path="/" element={<EmailInputPage />} />
-          <Route path="/verify-code" element={<CodeVerificationPage />} />
-          <Route exact path="/About" element={<About></About>} />
-          <Route exact path="/AllProducts" element={<AllProducts></AllProducts>} />
+
+        <Route exact path="/" element={<Home></Home>} />
+        <Route path="/EmailInputPage" element={<EmailInputPage/>} />
+        <Route path="/verify-code" element={<CodeVerificationPage />} /> 
+        <Route exact path="/About" element={<About></About>} />
+          <Route exact path="/AllProducts" element={<AllProducts></AllProducts>} /> 
+          <Route path="/product/:id" element={<Product />} />
+
           <Route exact path="/Contact" element={<Contact></Contact>} />
           <Route exact path="/Projects" element={<Projects></Projects>} />
           <Route path="/project/:id" element={<ProjectDetails />} />
           <Route path="/projects/:id" element={<ProjectDetails />} />
-          <Route path="/product/:id" element={<Product />} />
+
 
         <Route exact path="/Cart" element={<Cart />} />
         
@@ -48,6 +51,7 @@ function App() {
         className="whatsapp-icon"
       />
     </a>
+    <Footer></Footer>
 
     </>
   );

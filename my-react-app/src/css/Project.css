@@ -1,0 +1,46 @@
+/* עיצוב כללי */
+.loading-message, .error-message {
+    font-size: 1.5rem;
+    color: #333;
+    text-align: center;
+    margin-top: 20px;
+}
+
+/* כרטיס פרויקט */
+.project-card {
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.project-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+}
+
+/* כותרת כרטיס */
+.project-title {
+    font-size: 1.25rem;
+    font-weight: bold;
+    color: #333;
+}
+
+/* פרטי כרטיס */
+.project-details {
+    font-size: 0.9rem;
+    color: #666;
+}
+
+/* כפתור הצג פרטים */
+.view-details-btn {
+    background-color: #28a745;
+    border-color: #28a745;
+    width: 100%;
+    margin-top: 10px;
+}
+
+.view-details-btn:hover {
+    background-color: #218838;
+    border-color: #1e7e34;
+}
