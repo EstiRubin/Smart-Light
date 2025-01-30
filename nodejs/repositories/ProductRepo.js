@@ -8,22 +8,10 @@ class ProductRepo extends BaseRepo {
         // connect();
         super(Product);
     }
-    // async getAll() {
-    //     let l = await this.model.find({}).exec();
-    //     console.log(l);
-    //     return l;
-    // }
 
-    // async getById(id) {
-    //     try {
-    //         let product = await this.model.findById(id);
-    //         return product;
-    //     }
-    //     catch (errors) {
-    //         console.log(errors.message);
-    //         throw new Error('Something wrong happened');
-    //     }
-    // }
+    async getProductsByCategoryId  (categoryId) {
+        return await Product.find({ categoryID: categoryId });
+      };
 
 }
 export default new ProductRepo(Product);

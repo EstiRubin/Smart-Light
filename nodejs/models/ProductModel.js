@@ -10,7 +10,7 @@ const ProductSchema = new Schema({
     images : [String],
     colors : [String],
     lightColors : [String],
-    categoryID : Number,
+    categoryID : [Number],
     IP: Number,
     DIM: String,
     beamAngle: String,

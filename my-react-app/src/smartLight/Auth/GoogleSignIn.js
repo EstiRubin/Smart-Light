@@ -27,7 +27,7 @@ const GoogleSignIn = ({ onSuccess }) => {
   };
 
   return (
-    <GoogleOAuthProvider clientId="YOUR_GOOGLE_CLIENT_ID">
+    <GoogleOAuthProvider clientId="98326602501-5h78tu67tq11dpa7nfbkqeiecfululmt.apps.googleusercontent.com">
       <div>
         <h2>Sign In with Google</h2>
         <GoogleLogin

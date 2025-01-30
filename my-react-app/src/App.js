@@ -14,6 +14,8 @@ import  './css/whatsapp.css'
 import Footer from './smartLight/Footer';
 import EmailInputPage from './smartLight/Auth/EmailInputPage';
 import CodeVerificationPage from './smartLight/Auth/CodeVerificationPage';
+import ProductList from './smartLight/AllProducts';
+import GoogleSignIn from './smartLight/Auth/GoogleSignIn';
 function App() {
   const whatsappNumber = "972500000000";
   return (
@@ -23,10 +25,11 @@ function App() {
         <Routes>
 
         <Route exact path="/" element={<Home></Home>} />
+        <Route exact path="/GoogleSignIn" element={<GoogleSignIn></GoogleSignIn>} />
         <Route path="/EmailInputPage" element={<EmailInputPage/>} />
         <Route path="/verify-code" element={<CodeVerificationPage />} /> 
         <Route exact path="/About" element={<About></About>} />
-          <Route exact path="/AllProducts" element={<AllProducts></AllProducts>} /> 
+        <Route path="/AllProducts/:category" element={<ProductList />} />
           <Route path="/product/:id" element={<Product />} />
 
           <Route exact path="/Contact" element={<Contact></Contact>} />

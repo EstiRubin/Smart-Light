@@ -88,4 +88,58 @@
   .dropdown-content {
     direction: rtl; /* התאמת כיוון התפריט הנפתח */
   }
-  
+/* התפריט הנפתח הראשי */
+.dropdown-content {
+  position: absolute;
+  top: 100%;
+  right: 0;
+  background-color: white;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+  border-radius: 5px;
+  min-width: 200px;
+  padding: 10px;
+  display: none;
+  flex-direction: column;
+  z-index: 100;
+}
+
+/* הצגת הדרופדאון במעבר עכבר */
+.dropdown:hover .dropdown-content {
+  display: flex;
+}
+
+/* קטגוריה ראשית */
+.category {
+  position: relative;
+}
+
+/* תת-תפריט בתוך קטגוריה */
+.dropdown-absolute {
+  position: absolute;
+  top: 0;
+  right: 100%; /* נפתח לצד ימין */
+  background-color: #f8f8f8;
+  border-radius: 5px;
+  padding: 5px;
+  min-width: 200px;
+  display: none;
+}
+
+/* כאשר מרחפים על צמודי תקרה, הצג את התפריט */
+.category:hover .dropdown-absolute {
+  display: block;
+}
+
+/* עיצוב קישורים */
+.dropdown-content a,
+.dropdown-absolute a {
+  display: block;
+  color: black;
+  padding: 5px;
+  text-decoration: none;
+}
+
+.dropdown-content a:hover,
+.dropdown-absolute a:hover {
+  background-color: #ddd;
+}

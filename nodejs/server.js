@@ -16,7 +16,7 @@ configDotenv();
 
 const app = express();
 const hostname = process.env.HOST_NAME || "localhost";
-const port = process.env.PORT || 3001;
+const port = process.env.PORT || 3000;
 
 
 // Middleware

@@ -1,23 +1,23 @@
 import nodemailer from "nodemailer";
 
 
-// const transporter = nodemailer.createTransport({
-//   service: "Gmail",
-//   auth: {
-//       user:process.env.EMAIL_USER,
-//       pass:process.env.EMAIL_PASS, // השתמש כאן בסיסמת האפליקציה החדשה
-//   },
-// });
-
 const transporter = nodemailer.createTransport({
-  host: process.env.HOST_NAME, // SMTP host
-  port: process.env.PORT || 587, // Port for sending emails (587 is the default for non-secure connections)
-  secure: process.env.PORT == 465, // אם ה-Port הוא 465 אז זה "secure"
+  service: "Gmail",
   auth: {
-      user: process.env.EMAIL_USER, // כתובת המייל שלך
-      pass: process.env.EMAIL_PASS, // הסיסמה
+      user:process.env.EMAIL_USER,
+      pass:process.env.EMAIL_PASS, // השתמש כאן בסיסמת האפליקציה החדשה
   },
 });
+
+// const transporter = nodemailer.createTransport({
+//   host: process.env.HOST_NAME, // SMTP host
+//   port: process.env.PORT || 587, // Port for sending emails (587 is the default for non-secure connections)
+//   secure: process.env.PORT == 465, // אם ה-Port הוא 465 אז זה "secure"
+//   auth: {
+//       user: process.env.EMAIL_USER, // כתובת המייל שלך
+//       pass: process.env.EMAIL_PASS, // הסיסמה
+//   },
+// });
 
 export const sendEmail = async (to, subject, text) => {
   const mailOptions = { from: process.env.EMAIL_USER, to, subject, text };
