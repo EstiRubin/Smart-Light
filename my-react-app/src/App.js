@@ -1,14 +1,12 @@
 import './App.css';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import About from './smartLight/About';
-import AllProducts from './smartLight/AllProducts';
 import Contact from './smartLight/Contact';
 import Home from './smartLight/Home';
 import Navbar from './smartLight/Navbar';
 import Product from './smartLight/Product';
 import Projects from './smartLight/Projects';
 import ProjectDetails from './smartLight/ProjectDetails';
-import Cart from './smartLight/Cart';
 import whatsapp from './img/whatsapp.png'
 import  './css/whatsapp.css'
 import Footer from './smartLight/Footer';
@@ -16,6 +14,7 @@ import EmailInputPage from './smartLight/Auth/EmailInputPage';
 import CodeVerificationPage from './smartLight/Auth/CodeVerificationPage';
 import ProductList from './smartLight/AllProducts';
 import GoogleSignIn from './smartLight/Auth/GoogleSignIn';
+import CartPage from './smartLight/pages/CartPage';
 function App() {
   const whatsappNumber = "972500000000";
   return (
@@ -38,7 +37,7 @@ function App() {
           <Route path="/projects/:id" element={<ProjectDetails />} />
 
 
-        <Route exact path="/Cart" element={<Cart />} />
+        <Route exact path="/Cart" element={<CartPage />} />
         
         </Routes>
       </BrowserRouter>

@@ -1,12 +1,19 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import axios from 'axios';
+import { useDispatch } from "react-redux";
+import { addToCart } from "../redux/action/cartActions.js"; 
 // import { useDispatch } from 'react-redux';
 // import { addToCart } from './cartReducer';
 
 const ProductDetail = () => {
   const { id } = useParams();
   const [product, setProduct] = useState(null);
+  const dispatch = useDispatch();  // ייבוא של useDispatch
+
+  const handleAddToCart = () => {
+    dispatch(addToCart(product));  // קריאה לפונקציית ה-action
+  };
 //   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -43,20 +50,8 @@ const ProductDetail = () => {
           <p><strong>Beam Angle:</strong> {product.beamAngle}</p>
           <p><strong>IP Rating:</strong> {product.IP}</p>
           <p><strong>DIM:</strong> {product.DIM}</p>
-          <button
-            // onClick={handleAddToCart}
-            style={{
-              padding: "10px 20px",
-              backgroundColor: "#007bff",
-              color: "white",
-              border: "none",
-              borderRadius: "5px",
-              cursor: "pointer",
-              marginTop: "20px"
-            }}
-          >
-            Add to Cart
-          </button>
+          <button onClick={handleAddToCart}>הוסף לעגלה</button>  {/* כפתור ההוספה */}
+
         </div>
       </div>
     </div>

@@ -12,11 +12,9 @@ export default function Navbar() {
           <li className="nav-item" role="presentation">
             <Link to="/">בית</Link>
           </li>
-          <li className="nav-item" role="presentation">
-            <Link to="/AllProducts">מוצרים</Link>
-          </li>
+    
           <li className="dropdown">
-            <a className="dropbtn">קטגוריות</a>
+            <a className="dropbtn">מוצרים</a>
             <div className="dropdown-content">
               <div className="column">
                 <h4> <Link to="/AllProducts/Indoor_lighting">תאורת פנים</Link></h4>

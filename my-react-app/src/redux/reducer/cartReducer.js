@@ -1,25 +1,48 @@
-const cart = [];
-export const cartReducer = (state = cart, action) => {
+const initialState = {
+    items: [],
+  };
+  
+  export const cartReducer = (state = initialState, action) => {
     switch (action.type) {
-        case "DELETEEROMCART": {
-            state = state.filter(item => item.cartQTY != 0)
-            return state;
+      case "ADD_TO_CART":
+        const existingProductIndex = state.items.findIndex(
+          (item) => item._id === action.payload._id
+        );
+        if (existingProductIndex >= 0) {
+          const updatedItems = [...state.items];
+          updatedItems[existingProductIndex].quantity += 1;
+          return { ...state, items: updatedItems };
+        } else {
+          return { 
+            ...state, 
+            items: [...state.items, { ...action.payload, quantity: 1 }] 
+          };
         }
-        case "DELETEITMEROMCART": {
-            state = state.filter(item => item.id != action.product.id)
-            return state;
-        }
-        case "ADDTOCART": {
-            let flag = 0;
-            state.map(element => {
-                if (element.id == action.product.id)
-                    flag = 1;
-            })
-            if (!flag) {
-                return [...state, action.product];
-            }
-            return state
-        }
+  
+      case "UPDATE_QUANTITY":
+        const updatedCart = state.items
+          .map((item) =>
+            item._id === action.payload._id
+              ? { ...item, quantity: action.payload.quantity }
+              : item
+          )
+          .filter((item) => item.quantity > 0); // מוחק מוצרים עם כמות 0
+        return { ...state, items: updatedCart };
+  
+      case "REMOVE_FROM_CART":
+        return {
+          ...state,
+          items: state.items.filter((item) => item._id !== action.payload),
+        };
+  
+      case "REMOVE_ALL_FROM_CART":
+        return {
+          ...state,
+          items: [],
+        };
+  
+      default:
+        return state;
     }
-    return state;
-}
+  };
+  

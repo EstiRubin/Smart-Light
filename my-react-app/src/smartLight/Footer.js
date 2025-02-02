@@ -6,12 +6,12 @@ const Footer = () => {
     <footer className="footer">
       <div className="footer-section">
         <h3>ליצירת קשר:</h3>
-        <p>Email: s025712483@gmail.com</p>
-        <p>טלפון:02-5712483</p>
+        <p>5712483@gmail.com</p>
+        <p>02-5712483</p>
       </div>
       <div className="footer-section">
         <h3>כתובת</h3>
-        <p>טללים 26</p>
+        <p>טללים 21</p>
         <p>ירושלים</p>
       </div>
       <div className="footer-section">

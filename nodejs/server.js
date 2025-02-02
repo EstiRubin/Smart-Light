@@ -11,6 +11,7 @@ import dotenv from 'dotenv';
 import authRoutes from './routers/AuthRouter.js'
 import session from "express-session";
 import passport from 'passport';
+import emailRouter from "./routers/EmailRoutes.js"
 // import "./Util/passportConfigUtil.js"
 configDotenv();
 
@@ -42,7 +43,7 @@ app.use("/api/project", projectRouter);
 app.use("/api/user", userRouter);
 app.use("/api/cart", cartRouter);
 app.use("/api/recommendation", recommendationRouter);
-
+app.use("/api/email", emailRouter);
 app.get("/", (req, res) => {
   res.send("Welcome to SmartLight platform! ⚡💡👋💡⚡");
 });

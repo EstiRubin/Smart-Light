@@ -1,24 +1,23 @@
-import mongoose  from "mongoose";
+import mongoose from "mongoose";
 
-const Schema = mongoose.Schema
+const cartSchema = new mongoose.Schema({
+  userId: { type: String, required: true },
+  items: [
+    {
+        _id: Number,
+        nameOfProduct : String, 
+        watt : [String],
+        images : [String],
+        colors : [String],
+        lightColors : [String],
+        categoryID : [Number],
+        IP: Number,
+        DIM: String,
+        beamAngle: String,
+        tags: [String]
+    },
+  ],
+  updatedAt: { type: Date, default: Date.now },
+});
 
-const CartSchema = new Schema ({
-    _id: Number,
-    // userId: Number,
-    items: [
-        {
-            productId: Number,
-            quantity: Number,
-            customization: {
-                color: String,        
-                lightColor: String,    
-                watt: String,         
-                otherOptions: String   
-            }           
-        }
-    ],
-}, {versionKey: false}, {timestamps: true});
-
-const Cart = mongoose.model('carts', CartSchema);
-
-export default Cart;
+export default mongoose.model("carts", cartSchema);
