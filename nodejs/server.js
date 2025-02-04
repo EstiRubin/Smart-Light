@@ -12,6 +12,7 @@ import authRoutes from './routers/AuthRouter.js'
 import session from "express-session";
 import passport from 'passport';
 import emailRouter from "./routers/EmailRoutes.js"
+import contactRoutes from './routers/ContactRoutes.js'
 // import "./Util/passportConfigUtil.js"
 configDotenv();
 
@@ -44,6 +45,7 @@ app.use("/api/user", userRouter);
 app.use("/api/cart", cartRouter);
 app.use("/api/recommendation", recommendationRouter);
 app.use("/api/email", emailRouter);
+app.use('/api', contactRoutes);
 app.get("/", (req, res) => {
   res.send("Welcome to SmartLight platform! ⚡💡👋💡⚡");
 });
@@ -51,3 +53,7 @@ app.get("/", (req, res) => {
 app.listen(port, hostname, () => {
   console.log(`Server running at http://${hostname}:${port}/`);
 });
+
+console.log("EMAIL_USER:", process.env.EMAIL_USER);
+console.log("EMAIL_PASS:", process.env.EMAIL_PASS);
+console.log("EMAIL_BUSINESS:", process.env.EMAIL_BUSINESS);
