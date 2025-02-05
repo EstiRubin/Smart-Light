@@ -1,80 +1,121 @@
 .product-list-container {
-  width: 100%;
-  padding: 20px;
-  background-color: #f9f9f9; /* רקע בהיר שיבליט את המוצרים */
   display: flex;
   justify-content: center;
   align-items: center;
-  flex-wrap: wrap;
+  flex-direction: column;
+  width: 100%;
 }
 
 .product-cards-container {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 20px;
-  justify-content: center;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr); /* בדיוק 4 מוצרים בשורה */
+  width: 100%;
+  max-width: 1200px;
+  border-collapse: collapse; /* מחבר את כל הכרטיסים כמו טבלה */
 }
 
 .product-card {
-  background-color: #fff; /* רקע לבן */
-  border-radius: 15px; /* פינות מעוגלות */
-  width: 280px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* הצללה רכה */
-  overflow: hidden; /* להסתיר כל דבר שיוצא מגבולות הקארד */
-  transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+  border: 2px solid black; /* גבול ברור */
+  background: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  height: 350px;
+  padding: 15px;
+  box-sizing: border-box;
   cursor: pointer;
+  transition: transform 0.2s ease-in-out;
+  border-radius: 0%;
 }
 
 .product-card:hover {
-  transform: translateY(-10px); /* אפקט של ריחוף מעלה */
-  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15); /* הצללה חזקה יותר בריחוף */
-}
-
-.product-image-container {
-  height: 180px;
-  width: 100%;
-  overflow: hidden;
+  transform: scale(1.02); /* הגדלה עדינה */
 }
 
 .product-image {
   width: 100%;
-  height: 100%;
-  object-fit: cover; /* מכסה את התמונה בצורה מדויקת */
-  transition: transform 0.3s ease-in-out;
+  height: 200px;
+  object-fit: contain;
 }
 
-.product-card:hover .product-image {
-  transform: scale(1.1); /* הגדלת התמונה קצת בריחוף */
+.product-divider {
+  width: 100%;
+  height: 2px;
+  background: black;
+  margin: 10px 0;
+}
+
+.product-info {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  padding: 5px 10px;
+  align-items: center;
 }
 
 .product-name {
-  font-size: 20px;
   font-weight: bold;
-  color: #333;
-  margin: 10px 0;
-  text-align: center;
+  text-align: right;
+  flex-grow: 1;
 }
 
-.product-price, .product-watt {
-  font-size: 16px;
-  color: #666;
-  text-align: center;
-  margin: 5px 0;
+.product-colors {
+  display: flex;
+  gap: 5px;
 }
 
-.view-details-btn {
-  display: block;
-  margin-top: 15px;
-  padding: 10px;
-  background-color: #00aaff; /* צבע תכלת */
-  color: #fff;
-  text-align: center;
-  font-size: 16px;
-  text-decoration: none;
-  border-radius: 5px;
-  transition: background-color 0.3s ease;
+.color-circle {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  border: 1px solid #000;
 }
 
-.view-details-btn:hover {
-  background-color: #0088cc; /* גוון כהה יותר כשהכפתור מרחף */
+
+
+
+
+
+
+
+
+
+
+/* styles.css */
+.products-header {
+  display: flex; /* פריסה אופקית */
+  align-items: center; /* יישור אנכי למרכז */
+  justify-content: space-between; /* רווח בין הכותרת לתיבת החיפוש */
+  padding: 20px; /* ריווח פנימי */
+  background-color: #ffffff; /* צבע רקע אפור בהיר (ניתן לשינוי) */
+  border-bottom: 1px solid #ffffff; /* קו תחתון */
+}
+
+.title {
+  font-size: 80px; /* גודל כותרת */
+  font-weight: bold; /* עובי כותרת */
+}
+
+.search-box {
+  display: flex; /* פריסה אופקית של תיבת החיפוש והכפתור */
+}
+
+.search-box input[type="text"] {
+  padding: 8px; /* ריווח פנימי בתיבת הטקסט */
+  border: 1px solid #ccc; /* מסגרת */
+  border-radius: 4px; /* פינות מעוגלות */
+  margin-right: 5px; /* רווח מימין לכפתור */
+}
+
+.search-box button {
+  background-color: transparent; /* רקע שקוף */
+  border: none; /* ללא מסגרת */
+  cursor: pointer; /* סמן עכבר */
+}
+
+.search-box button img {
+  width: 20px; /* גודל אייקון החיפוש */
+  height: 20px;
 }

@@ -4,53 +4,58 @@ import { Link, useParams } from 'react-router-dom';
 import "../css/ALLproduct.css";
 
 const ProductList = () => {
-  const [products, setProducts] = useState([]);  // Initial state is an empty array
-  const { category } = useParams();  // Getting the category from the URL
+  const [products, setProducts] = useState([]);
+  const { category } = useParams();
 
   useEffect(() => {
-    // Fetch the products for the current category
     if (category) {
-      axios.get(`http://localhost:3001/api/product/category/${category}`)
-        .then(response => {
-          // Update the state with the fetched products
-          setProducts(response.data);
-        })
+      axios.get(`http://localhost:3000/api/product/category/${category}`)
+        .then(response => setProducts(response.data))
         .catch(error => {
           console.error(error);
-          setProducts([]);  // If there's an error, reset the products state
+          setProducts([]);
         });
     }
-  }, [category]);  // The effect runs whenever the category changes
+  }, [category]);
 
   return (
+    <>
+    <div className="products-header">
+      <div className="search-box">
+        <input type="text" placeholder="Search..." />
+        <button>
+          <img src="search-icon.png" alt="Search" /> {/* או SVG */}
+        </button>
+      </div>
+      <div className="title">
+{category}      </div>
+      
+    </div>
     <div className="product-list-container">
       <div className="product-cards-container">
         {products.length > 0 ? (
           products.map(product => (
-            <div key={product._id} className="product-card">
-              <h2 className="product-name">{product.nameOfProduct}</h2>
-              <div className="product-image-container">
-                <img 
-                  src={product.images[0]} 
-                  alt={product.nameOfProduct} 
-                  className="product-image" 
-                />
+            <Link key={product._id} to={`/product/${product._id}`} className="product-link">
+              <div className="product-card">
+                <img src={product.images[0]} alt={product.nameOfProduct} className="product-image" />
+                <div className="product-divider"></div>
+                <div className="product-info">
+                  <span className="product-name">{product.nameOfProduct}</span>
+                  <div className="product-colors">
+                    {product.colors.map((color, index) => (
+                      <div key={index} className="color-circle" style={{ backgroundColor: color }}></div>
+                    ))}
+                  </div>
+                </div>
               </div>
-              <p className="product-price">Price: {product.price.join(", ")}₪</p>
-              <p className="product-watt">Watt: {product.watt.join(", ")}</p>
-              <Link
-                to={`/product/${product._id}`} 
-                className="view-details-btn"
-              >
-                View Details
-              </Link>
-            </div>
+            </Link>
           ))
         ) : (
-          <p>No products found for this category.</p>  // Show this message if no products are found
+          <p>No products found for this category.</p>
         )}
       </div>
     </div>
+    </>
   );
 }
 
