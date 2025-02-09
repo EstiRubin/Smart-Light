@@ -24,105 +24,113 @@ const ProductDetail = () => {
   if (!product) return <p>Loading...</p>;
 
   return (
+    <>      <h1 style={{textAlign:"right",paddingRight:"11%",paddingBottom:"1%"}}>{product.nameOfProduct}</h1>
+
     <div style={{
-      padding: "0",
       width: "100%",
-      maxWidth: "100%",  // מתפרס על כל העמוד
+      maxWidth: "1200px",
       margin: "0 auto",
       fontFamily: "Arial, sans-serif",
-      display: "flex",
-      flexDirection: "column"
+      display: "grid",
+      gridTemplateColumns: "1fr 3fr 1fr",
+      border: "2px solid black",
+      // height: "80vh"
     }}>
-      <h1 style={{
-        margin: "0",
-        textAlign: "center",
-        fontSize: "38px", // הקטנתי את הגודל
-        fontWeight: "bold",
-        padding: "15px 0", // הורדתי את המסגרת
+      {/* גלריית תמונות צד שמאל */}
+      <div style={{
+        display: "flex",
+        alignItems: "center",
+        borderRight: "2px solid black",
+        paddingRight: "10px",
+        height: "100%",
+        flexDirection: "column",
+        justifyContent: "end",
       }}>
-        {product.nameOfProduct} 
-      </h1>
+        {product.images && product.images.map((img, index) => (
+          <img
+            key={index}
+            src={img}
+            alt={`תמונה ${index + 1}`}
+            style={{
+              width: "100%",
+              height: "100%", // כל תמונה תופסת 1/5 מהעמוד
+              objectFit: "cover",
+              cursor: "pointer",
+              borderBottom: "1px solid black"
+            }}
+            onClick={() => setMainImage(img)}
+          />
+        ))}
+      </div>
 
-      {/* קו מעל גלריית התמונות */}
-      <hr style={{ border: "1px solid black", margin: "10px 0" }} />
+      {/* תמונה ראשית */}
+      <div style={{
+        display: "flex",
+        justifyContent: "center",
+        alignItems: "center",
+        borderRight: "2px solid black"
+      }}>
+        {mainImage && (
+          <img src={mainImage} alt="מוצר ראשי" style={{
+            width: "100%",
+            maxHeight: "100%",
+            objectFit: "contain"
+          }} />
+        )}
+      </div>
 
-      <div style={{ display: "flex", width: "100%" }}>
-        {/* גלריה של תמונות נוספות */}
-        <div style={{
-          width: "20%",
-          display: "flex",
-          flexDirection: "column",
-          borderRight: "1px solid black",
-          paddingRight: "10px"
-        }}>
-          {product.images && product.images.map((img, index) => (
-            <img
-              key={index}
-              src={img}
-              alt={`תמונה ${index + 1}`}
-              style={{
-                width: "100%",
-                height: "100%", // תמונות בצד שמאל בריבוע מדויק
-                cursor: "pointer",
-                borderBottom: "1px solid black",
-                objectFit: "cover"
-              }}
-              onClick={() => setMainImage(img)}
-            />
+      {/* פרטי מוצר */}
+      <div style={{
+        display: "flex",
+        flexDirection: "column",
+        justifyContent: "end",
+        textAlign: "right",
+       // padding: "10px"
+
+      }}>
+        <p style={{paddingRight: "10px"}}><strong>מק"ט:</strong> {product.sku || "N/A"}</p>
+        <p style={{paddingRight: "10px"}}><strong>צבעים:</strong> {product.colors?.join(", ") || "N/A"}</p>
+        <p style={{paddingRight: "10px"}}><strong>וואט:</strong> {product.watt || "N/A"}W</p>
+        <button
+          onClick={() => dispatch(addToCart(product))}
+          style={{
+            backgroundColor: "black",
+            color: "white",
+            padding: "12px",
+            border: "none",
+            cursor: "pointer",
+            fontWeight: "bold",
+            marginTop: "10px",
+          }}
+        >
+          הוסף לעגלה
+        </button>
+      </div>
+
+      {/* מוצרים דומים
+      <div style={{
+        gridColumn: "span 3",
+        borderTop: "2px solid black",
+        marginTop: "20px",
+        paddingTop: "10px"
+      }}>
+        <h2 style={{ textAlign: "center" }}>מוצרים דומים</h2>
+        <div style={{ display: "flex", gap: "10px", justifyContent: "center" }}>
+          {product.relatedProducts && product.relatedProducts.map((related, index) => (
+            <div key={index} style={{
+              textAlign: "center",
+              border: "1px solid black",
+              padding: "10px",
+              width: "150px"
+            }}>
+              <img src={related.image} alt={related.name} style={{ width: "100%", height: "100px", objectFit: "cover" }} />
+              <p>{related.name}</p>
+            </div>
           ))}
         </div>
+      </div> */}
 
-        {/* קו בין התמונה הגדולה לצד ימין */}
-        <hr style={{ border: "1px solid black", height: "100%", margin: "0 20px" }} />
-
-        {/* תמונה ראשית */}
-        <div style={{
-          width: "60%",
-          height: "auto",
-          aspectRatio: "1/1", // שמירה על פרופורציות של ריבוע
-          textAlign: "center",
-          padding: "15px",
-        }}>
-          {mainImage && (
-            <img src={mainImage} alt="מוצר ראשי" style={{
-              width: "100%",
-              height: "100%",
-              objectFit: "cover"
-            }} />
-          )}
-        </div>
-
-        {/* מידע וכפתור */}
-        <div style={{
-          width: "20%",
-          padding: "10px",
-          display: "flex",
-          flexDirection: "column",
-          justifyContent: "flex-end",
-          textAlign: "right"
-        }}>
-          <p><strong>מק"ט:</strong> {product.sku || "N/A"}</p>
-          <p><strong>צבעים:</strong> {product.colors?.join(", ") || "N/A"}</p>
-          <p><strong>וואט:</strong> {product.watt || "N/A"}W</p>
-          <p><strong>מחיר:</strong> {product.price || "N/A"}₪</p>
-          <button
-            onClick={() => dispatch(addToCart(product))}
-            style={{
-              backgroundColor: "black",
-              color: "white",
-              padding: "12px 25px", // הקטנתי את הכפתור
-              border: "none",
-              cursor: "pointer",
-              fontWeight: "bold",
-              width: "100%",
-              marginTop: "auto"
-            }}
-          >
-            הוסף לעגלה
-          </button>
-        </div>
-      </div>
-    </div>
+    </div></>
   );
 };
 

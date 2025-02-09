@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { Link, useParams } from 'react-router-dom';
 import "../css/ALLproduct.css";
-
+import search from "../img/search.jpg";
 const ProductList = () => {
   const [products, setProducts] = useState([]);
   const { category } = useParams();
@@ -17,18 +17,20 @@ const ProductList = () => {
         });
     }
   }, [category]);
-
+  const removeUnderscores = (str) => {
+    return str.replace(/_/g, ' '); // Replaces all underscores with a space
+  };
   return (
     <>
     <div className="products-header">
       <div className="search-box">
         <input type="text" placeholder="Search..." />
         <button>
-          <img src="search-icon.png" alt="Search" /> {/* או SVG */}
+          <img src={search} alt="Search" /> {/* או SVG */}
         </button>
       </div>
-      <div className="title">
-{category}      </div>
+      <div className="title">{removeUnderscores(category)}
+     </div>
       
     </div>
     <div className="product-list-container">
