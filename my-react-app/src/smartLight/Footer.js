@@ -18,7 +18,7 @@ const Footer = () => {
         <div className="footer-section">
           <h3>מפעל ייצור</h3>
           <p>
-            <strong>כתובת:</strong> חילזון התעשייה 14, קרית מלאכי
+            <strong>כתובת:</strong> חלוצי התעשייה 14, קרית מלאכי
           </p>
           <p>
             <strong>שעות פתיחה:</strong> 08:00 - 16:00

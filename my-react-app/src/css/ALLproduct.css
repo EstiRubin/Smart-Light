@@ -119,3 +119,16 @@
   width: 20px; /* גודל אייקון החיפוש */
   height: 20px;
 }
+
+.product-colors {
+  display: flex;
+  gap: 10px; /* רווח בין העיגולים */
+  padding-right: 10px; /* יישור לימין */
+}
+
+.color-circle {
+  width: 30px; /* גודל העיגול */
+  height: 30px; /* גובה העיגול */
+  border-radius: 50%; /* הופך את הצורה לעיגול */
+  border: 2px solid black; /* מסגרת שחורה לעיגול */
+}
