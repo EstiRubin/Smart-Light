@@ -124,10 +124,10 @@ const ProductList = () => {
                                 colors.length > 1
                                   ? `linear-gradient(to right, ${color1} 50%, ${color2} 50%)`
                                   : color1, // אם יש רק צבע אחד, פשוט רקע רגיל
-                              width: "30px",
-                              height: "30px",
+                              width: "20px",
+                              height: "20px",
                               borderRadius: "50%",
-                              margin: "5px",
+                             // margin: "2px",
                               border: color.includes("לבן")
                                 ? "1px solid black"
                                 : "none", // מסגרת אם יש צבע לבן

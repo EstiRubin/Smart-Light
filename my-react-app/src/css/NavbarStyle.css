@@ -1,145 +1,188 @@
-/* Navbar.css */
-.navbar {
-    display: flex;
-    align-items: center;
-    padding: 1rem;
-    background-color: #333; /* Change to your preferred color */
-  }
-  
-  .logo img {
-    height: 40px; /* Adjust logo size */
-    margin-right: 20px; /* Space between logo and links */
-  }
-  
-  .nav-links {
-    list-style: none;
-    display: flex;
-    gap: 30px; /* Space between links */
-  }
-  
-  .nav-links li {
-    display: inline;
-  }
-  
-  .nav-links a {
-    color: rgb(2, 2, 2); /* Change text color */
-    text-decoration: none; /* Remove underline */
-  }
-  
-  .nav-links a:hover {
-    text-decoration: underline; /* Underline on hover */
-  }
-  
-  /* Dropdown styles */
-  .dropdown {
-    position: relative; /* Position relative to allow absolute positioning of dropdown */
-  }
-  
-  .dropbtn {
-    color: rgb(235, 230, 230); /* Button text color */
-    text-decoration: none; /* Remove underline */
-    cursor: pointer; /* Pointer cursor on hover */
-  }
-  
-  /* Dropdown content (hidden by default) */
-  .dropdown-content {
-    display: none;
-    position: absolute; /* Positioning dropdown content */
-    background-color: #333; /* Background color */
-    min-width: 160px; /* Set minimum width */
-    z-index: 1; /* Ensure dropdown is above other content */
-  }
-  
-  /* Show dropdown on hover */
-  .dropdown:hover .dropdown-content {
-    display: block; /* Show dropdown on hover */
-  }
-  
-  .dropdown-content a {
-    color: rgb(252, 249, 249); /* Link color */
-    padding: 12px 16px; /* Padding for links */
-    text-decoration: none; /* Remove underline */
-    display: block; /* Display links as block */
-  }
-  
-  .dropdown-content a:hover {
-    background-color: #575757; /* Change background on hover */
-  }
-  .navbar {
-    direction: rtl;
-    text-align: right;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 10px 20px;
-    background-color: #f8f9fa;
-  }
-  
-  .nav-links {
-    list-style: none;
-    display: flex;
-    gap: 20px;
-  }
-  
-  .nav-item {
-    font-size: 1rem;
-  }
-  
-  .dropdown-content {
-    direction: rtl; /* התאמת כיוון התפריט הנפתח */
-  }
-/* התפריט הנפתח הראשי */
+.navbar-container {
+  direction: rtl;
+  text-align: right;
+  background-color: white;
+  border-bottom: 1px solid black;
+}
+
+/* קו שחור עבה למעלה */
+.navbar-top {
+  height: 10px;
+  background-color: black;
+}
+
+/* שורה ראשונה */
+.navbar-top-section {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 20px;
+  position: relative;
+  border-bottom: 2px solid black;
+
+}
+
+.logo img {
+  height: 50px;
+}
+
+.nav-icons {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.nav-icons img {
+  height: 25px;
+  cursor: pointer;
+}
+
+/* תפריט ניווט */
+.navbar-bottom-section {
+  text-align: right;
+  /* padding: 30px 0; */
+  height: 70px;
+}
+
+.nav-links {
+  list-style: none;
+  display: flex;
+  justify-content: right;
+  /* padding: 20px 0; */
+  /* margin-top: 20px; */
+  gap: 170px;
+  height: 50px;
+  align-items: end;
+  padding-right: 0;
+
+}
+
+.nav-links li {
+  position: relative;
+  display: flex;
+  align-items: end;
+  height: 100%; /* מבטיח שכל פריט ניווט יהיה בגובה מלא */
+  padding: 0 15px; /* קצת ריווח משני הצדדים */
+  /* padding-bottom: 20px; */
+}
+
+.nav-links li:not(:first-child)::before {
+  content: "";
+  width: 1px;
+  height: 80%; /* גורם לקו להתפרש לכל גובה ה-li */
+  background-color: black;
+  position: absolute;
+  right: 0;
+  border-right: 1px solid black; /* מחליף את הקו עם גבול */
+  top: 0; /* מתחיל את הקו מהחלק העליון */
+}
+
+
+
+
+.nav-links a {
+  color: black;
+  text-decoration: none;
+  font-size: 1rem;
+  font-weight: bold;
+  padding-bottom: 5px;
+  border-bottom: 2px solid transparent; /* קו תחתון נסתר ברגיל */
+}
+
+.nav-links a:hover {
+  text-decoration: underline;
+}
+
+
+
+.nav-links a.active-link {
+  border-bottom: 2px solid black; /* קו תחתון עבה יותר לפריט שנבחר */
+}
+
+
+
+/* עיצוב הדרופדאון */
+.dropdown {
+  position: relative;
+}
+
 .dropdown-content {
+  display: none;
   position: absolute;
   top: 100%;
   right: 0;
   background-color: white;
+  border: 1px solid #ddd;
   box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
-  border-radius: 5px;
-  min-width: 200px;
+  min-width: 300px;
+  z-index: 10;
   padding: 10px;
-  display: none;
-  flex-direction: column;
-  z-index: 100;
+  display: flex;
+  gap: 20px;
 }
 
-/* הצגת הדרופדאון במעבר עכבר */
 .dropdown:hover .dropdown-content {
   display: flex;
 }
 
-/* קטגוריה ראשית */
+.column {
+  display: flex;
+  flex-direction: column;
+  width: 200px;
+}
+
+.column h4 {
+  font-size: 1.2rem;
+  font-weight: bold;
+  font-size: 14px !important;
+}
+
+.dropdown-content a {
+  display: block;
+  color: black;
+  padding: 10px;
+  text-decoration: none;
+  font-size: 0.9rem;
+}
+
+.dropdown-content a:hover {
+  background-color: #f2f2f2;
+}
+
+/* תתי-קטגוריות בתוך דרופדאון */
 .category {
   position: relative;
 }
 
-/* תת-תפריט בתוך קטגוריה */
 .dropdown-absolute {
   position: absolute;
   top: 0;
-  right: 100%; /* נפתח לצד ימין */
-  background-color: #f8f8f8;
-  border-radius: 5px;
-  padding: 5px;
+  right: 100%;
+  background-color: white;
+  border: 1px solid #ddd;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
   min-width: 200px;
   display: none;
 }
 
-/* כאשר מרחפים על צמודי תקרה, הצג את התפריט */
 .category:hover .dropdown-absolute {
   display: block;
 }
 
-/* עיצוב קישורים */
-.dropdown-content a,
 .dropdown-absolute a {
   display: block;
   color: black;
-  padding: 5px;
+  padding: 8px;
   text-decoration: none;
 }
 
-.dropdown-content a:hover,
 .dropdown-absolute a:hover {
   background-color: #ddd;
 }
+
+
+/* 
+li{
+  height: 100% !important;
+  width: 100% !important;
+} */

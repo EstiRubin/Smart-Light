@@ -15,8 +15,9 @@ import CodeVerificationPage from './smartLight/Auth/CodeVerificationPage';
 import ProductList from './smartLight/AllProducts';
 import GoogleSignIn from './smartLight/Auth/GoogleSignIn';
 import CartPage from './smartLight/pages/CartPage';
+import SearchResults from './smartLight/SearchResults';
 function App() {
-  const whatsappNumber = "972500000000";
+  const whatsappNumber = "972527134164";
   return (
     <>
       {/* <BrowserRouter> */}
@@ -30,6 +31,7 @@ function App() {
         <Route exact path="/About" element={<About></About>} />
         <Route path="/AllProducts/:category" element={<ProductList />} />
           <Route path="/product/:id" element={<Product />} />
+          <Route path="/product/search/:searchTerm" element={<SearchResults />} />
 
           <Route exact path="/Contact" element={<Contact></Contact>} />
           <Route exact path="/Projects" element={<Projects></Projects>} />

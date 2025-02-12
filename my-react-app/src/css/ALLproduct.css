@@ -1,21 +1,32 @@
+body {
+  margin: 0;
+  padding: 0;
+  text-align: right; /* יישור טקסט לימין */
+}
+
 .product-list-container {
   display: flex;
-  justify-content: center;
-  align-items: center;
+  justify-content: flex-start; 
+  align-items: flex-start; 
   flex-direction: column;
   width: 100%;
+  padding: 0; 
 }
 
 .product-cards-container {
   display: grid;
-  grid-template-columns: repeat(4, 1fr); /* בדיוק 4 מוצרים בשורה */
-  width: 100%;
-  max-width: 1200px;
-  border-collapse: collapse; /* מחבר את כל הכרטיסים כמו טבלה */
+  width: 100%; /* תופס את כל רוחב המסך */
+  /* max-width: 1200px; אם יש צורך במקסימום */
+  grid-template-columns: repeat(4, minmax(200px, 250px));
+  align-items: start;
+  margin: 0; 
+  padding: 0; 
+  justify-content: flex-end; /* דחוף את הכרטיסים לצד ימין */
 }
 
+
 .product-card {
-  border: 2px solid black; /* גבול ברור */
+  border: 2px solid black; 
   background: white;
   display: flex;
   flex-direction: column;
@@ -28,7 +39,9 @@
   cursor: pointer;
   transition: transform 0.2s ease-in-out;
   border-radius: 0%;
+  margin: 0; 
 }
+
 
 .product-card:hover {
   transform: scale(1.02); /* הגדלה עדינה */
@@ -53,18 +66,17 @@
   width: 100%;
   padding: 5px 10px;
   align-items: center;
-}
-
-.product-name {
-  font-weight: bold;
-  text-align: right;
-  flex-grow: 1;
-}
-
-.product-colors {
   display: flex;
-  gap: 5px;
+  flex-direction: column;
+  gap: 5px; /* רווח בין שם המוצר לעיגולים */
+  display: flex;
+  flex-direction: row; /* מסדר את התוכן בשורה */
+  justify-content: space-between; /* יוצר רווח בין הטקסט לעיגולים */
+  align-items: center; /* מוודא שהם ממורכזים אנכית */
+  width: 100%;
 }
+
+
 
 .color-circle {
   width: 20px;
@@ -123,12 +135,40 @@
 .product-colors {
   display: flex;
   gap: 10px; /* רווח בין העיגולים */
-  padding-right: 10px; /* יישור לימין */
+  padding-right: 10px; /* יישור לימין */  
+  display: flex;
+  gap: 5px; /* רווח בין העיגולים */
+  justify-content: flex-end; /* מעביר את העיגולים לשמאל */
 }
+
 
 .color-circle {
   width: 30px; /* גודל העיגול */
   height: 30px; /* גובה העיגול */
   border-radius: 50%; /* הופך את הצורה לעיגול */
   border: 2px solid black; /* מסגרת שחורה לעיגול */
+}
+.product-info {
+  display: flex;
+  flex-direction: column; /* מסדר את התוכן בטור */
+  align-items: flex-start; /* מיישר לשמאל */
+  width: 100%;
+}
+
+.product-name {
+  width: 100%;
+  margin-bottom: 5px; /* רווח בין השם לעיגולים */
+  font-weight: bold;
+  text-align: right;
+  flex-grow: 1;
+  margin-bottom: 5px;
+  display: block;
+  flex-grow: 1; /* גורם לטקסט לתפוס את הצד הימני */
+
+}
+
+.product-colors {
+  display: flex;
+  gap: 5px; /* רווח קטן בין העיגולים */
+  justify-content: flex-start; /* מעביר את העיגולים לימין */
 }

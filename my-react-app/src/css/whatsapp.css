@@ -2,7 +2,7 @@
     position: fixed; /* כפתור צף */
     bottom: 20px; /* מרחק מתחתית המסך */
     right: 20px; /* מרחק מצד ימין */
-    background-color: #25d366; /* צבע רקע */
+    background-color: #000000; /* צבע רקע */
     border-radius: 50%; /* עיגול */
     width: 60px; /* גודל הכפתור */
     height: 60px;
@@ -16,7 +16,7 @@
   }
   
   .whatsapp-floating-button:hover {
-    background-color: #1eb75c; /* צבע בעת ריחוף */
+    background-color: #080808; /* צבע בעת ריחוף */
     transform: scale(1.1); /* אפקט זום */
   }
   
