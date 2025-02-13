@@ -1,6 +1,7 @@
 import React from "react";
 import "../css/FooterStyle.css";
 import { Link } from "react-router-dom";
+import Logo from "../img/לוגו סמארטלייט.jpg"
 
 const Footer = () => {
   return (
@@ -8,10 +9,7 @@ const Footer = () => {
       <div className="footer-container">
         {/* לוגו */}
         <div className="footer-logo">
-          <h2>
-            <span className="smart">SMART</span>
-            <span className="light">LIGHT</span>
-          </h2>
+              <img src={Logo}  style={{width:"250px"}} alt="logo"/>
         </div>
 
         {/* מפעל ייצור */}

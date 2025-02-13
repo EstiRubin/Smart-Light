@@ -8,6 +8,9 @@ const SearchResults = () => {
   const { searchTerm } = useParams();
 
   const colorMap = {
+    פליז:"#B5A642",
+    עץ:"#A67B5B",
+    רוז_גולד:"linear-gradient(45deg, #B76E79, #E6C7C2)",
     שחור: "black",
     בזלת: "darkgray",
     אפור: "gray",
@@ -42,7 +45,7 @@ const SearchResults = () => {
     חום_בהיר: "#D2B48C",
     בז: "beige",
     שמנת: "#FFF5E1",
-    זהב: "gold",
+    זהב: "linear-gradient(45deg, #FFD700, #E6BE8A, #CBA135)",
     כסף: "silver",
     ברונזה: "#CD7F32",
     טורקיז: "turquoise",

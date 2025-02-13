@@ -1,7 +1,7 @@
-.footer {
+/* .footer {
     background-color: #fff;
     border-top: 4px solid black;
-    padding: 20px;
+    padding: 30px;
     text-align: right;
   }
   
@@ -9,20 +9,37 @@
     display: flex;
     justify-content: space-between;
     flex-wrap: wrap;
+    width: 100%;
+    padding-right: 4%;
   }
   
   .footer-logo {
     font-size: 24px;
     font-weight: bold;
-  }
-  
-  .smart {
-    color: gray;
-  }
-  
-  .light {
-    color: green;
-  }
+    align-items: flex-end;
+  } */
+  .footer {
+    background-color: #fff;
+    border-top: 4px solid black;
+    padding: 30px;
+    text-align: right;
+}
+
+.footer-logo {
+    display: flex;
+    justify-content: center; /* ממקם את הלוגו במרכז */
+    align-items: center;
+    margin-bottom: 20px; /* רווח בין הלוגו לשאר התוכן */
+}
+
+.footer-container {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    width: 100%;
+    padding-right: 4%;
+}
+
   
   .footer-section {
     flex: 1;

@@ -77,8 +77,20 @@ export default function Navbar() {
                     <div className="dropdown-absolute">
                       <Link to="/AllProducts/Night_lamps"  onClick={() => {setSelectedLink('Product');}}>מנורת לילה</Link>
                       <Link to="/AllProducts/Shabbat_lamps"  onClick={() => {setSelectedLink('Product');}}>מנורת שבת</Link>
-                    </div>
+                      <Link to="/AllProducts/Wall_mounted"  onClick={() => {setSelectedLink('Product');}}>גופי תאורה צמודי קיר</Link>
+
+                      </div>
+                </div>
+                <div className="category">
+                  <Link to="/AllProducts/Profiles">פרופילים <img src={arrow} style={{width:"10px", marginRight:"5px"}}alt="חץ מטה"></img>  </Link>
+                  <div className="dropdown-absolute">
+                    <Link to="/AllProducts/LED_profiles">פרופילי לד</Link>
+                    <Link to="/AllProducts/Concealed_lighting">תאורה נסתרת</Link>
+                    <Link to="/AllProducts/Mashrabiya">משרביה</Link>
                   </div>
+                </div>
+                <Link to="/AllProducts/Magnetic_Profiles_and_Parts">פס מגנטי</Link>
+                
                 </div>
                 <div className="column">
                   <h4> <Link to="/AllProducts/Outdoor_lighting"   onClick={() => {setSelectedLink('Product');}} style={{fontSize:"18px"}}>תאורת חוץ</Link></h4>
