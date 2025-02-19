@@ -1,76 +1,52 @@
-.project-details-container {
-    display: flex;
-    align-items: flex-start;
-    padding: 20px;
-    height: 80vh;
+/* עיצוב כללי */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f5f5f5;
 }
 
+.project-details-container {
+    width: 80%;
+    margin: auto;
+    background: white;
+    padding: 20px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* כותרת */
+.project-title {
+    text-align: center;
+    font-size: 28px;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+/* קרוסלת תמונות */
 .carousel-container {
-    width: 33vw;
-    max-width: 400px;
+    width: 100%;
+    position: relative;
 }
 
 .main-image-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
     position: relative;
-    width: 100%;
-    height: 100%;
 }
 
 .main-image {
     width: 100%;
-    height: 100%;
+    max-height: 500px;
     object-fit: cover;
-    border-radius: 8px;
-}
-
-.arrow {
-    color: white;
-    border: none;
-    cursor: pointer;
-    font-size: 2rem;
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    background: none;
-}
-
-.left-arrow {
-    left: 10px;
-}
-
-.right-arrow {
-    right: 10px;
-}
-
-.project-info {
-    width: 65vw;
-    padding-left: 20px;
-}
-
-.project-title {
-    font-size: 2rem;
-    margin-bottom: 10px;
-}
-
-.project-date-location,
-.project-architect,
-.project-description {
-    margin-bottom: 15px;
+    border-radius: 5px;
 }
 
 .thumbnail-gallery {
-    margin-top: 20px;
-}
-
-.thumbnail-gallery h2 {
-    font-size: 1.5rem;
-    margin-bottom: 10px;
-}
-
-.thumbnail-container {
     display: flex;
+    justify-content: center;
     gap: 10px;
-    overflow-x: auto;
+    margin-top: 10px;
 }
 
 .thumbnail {
@@ -78,120 +54,70 @@
     height: 60px;
     object-fit: cover;
     cursor: pointer;
-    opacity: 0.6;
-    transition: opacity 0.3s ease;
-    border-radius: 4px;
+    border-radius: 3px;
+    transition: transform 0.2s;
 }
 
-.thumbnail:hover,
-.thumbnail.active {
-    opacity: 1;
-    border: 2px solid #007bff;
+.thumbnail:hover {
+    transform: scale(1.1);
 }
 
-.product-cards {
-    margin-top: 20px;
+.active {
+    border: 3px solid #000;
 }
 
-.product-card-container {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 10px;
-}
-
-.product-card {
-    width: 200px;
-    border: 1px solid #ddd;
-    border-radius: 8px;
-    padding: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-}
-
-.product-card h2 {
-    font-size: 1.5rem;
-    margin-bottom: 10px;
-}
-.product-cards {
-    margin-top: 20px;
-}
-
-.product-card-container {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 10px;
-}
-
-.product-card {
-    width: 200px;
-    border: 1px solid #ddd;
-    border-radius: 8px;
-    padding: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-}
-
-.product-card h2 {
-    font-size: 1.5rem;
-    margin-bottom: 10px;
-}
-
-.product-images {
-    display: flex;
-    gap: 5px;
-    margin-top: 10px;
-}
-
-.product-thumbnail {
-    width: 50px;
-    height: 50px;
-    object-fit: cover;
-    border-radius: 4px;
-    border: 1px solid #ccc;
-}
-
-.product-card-container {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 20px;
-}
-
-.product-card {
-    width: 300px;
-    border: 1px solid #ddd;
-    border-radius: 10px;
-    overflow: hidden;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-}
-
-.product-images img {
-    width: 100%;
-    height: auto;
-    margin-top: 10px;
-}
-.project-details-container {
-    padding: 20px;
-    font-family: Arial, sans-serif;
-}
-
+/* מידע על הפרויקט */
 .project-info {
+    margin-top: 20px;
+    padding: 15px;
+    background: #fff;
+}
+
+.project-date-location,
+.project-architect,
+.project-description {
+    font-size: 16px;
+    line-height: 1.5;
+}
+
+/* מוצרים משולבים */
+.product-cards {
+    margin-top: 40px;
+    padding-top: 20px;
+    border-top: 2px solid #ddd;
+}
+
+.product-cards h2 {
+    text-align: center;
+    font-size: 24px;
+    font-weight: bold;
     margin-bottom: 20px;
 }
 
 .product-card-container {
     display: flex;
+    justify-content: space-between;
     flex-wrap: wrap;
     gap: 20px;
 }
 
 .product-card {
-    width: 300px;
-    border: 1px solid #ddd;
-    border-radius: 10px;
-    overflow: hidden;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    width: 22%;
+    background: #fff;
+    padding: 15px;
+    text-align: center;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    border-radius: 5px;
 }
 
-.product-images img {
+.product-thumbnail {
     width: 100%;
-    height: auto;
-    margin-top: 10px;
+    height: 150px;
+    object-fit: cover;
+    border-radius: 5px;
+}
+
+.product-card-link {
+    text-decoration: none;
+    color: black;
 }

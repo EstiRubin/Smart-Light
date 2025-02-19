@@ -1,12 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
-import Button from 'react-bootstrap/Button';
-import Card from 'react-bootstrap/Card';
-import { Container, Row, Col } from 'react-bootstrap'; // הוספת רכיבי Bootstrap
-import "../css/Project.css"
+import "../css/Project.css";
+
 const ApiComponent = () => {
-    const [data, setData] = useState(null);
+    const [data, setData] = useState([]);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
     const navigate = useNavigate();
@@ -33,29 +31,28 @@ const ApiComponent = () => {
     };
 
     return (
-        <Container className="mt-5">
-            <Row>
+        <>
+        <h1 className="title1">פרויקטים</h1>
+
+        <div className="projects-section">
+            {/* פרויקטים */}
+            <>
+            </>
+            <div className="projects-wrapper">
                 {data.map((project) => (
-                    <Col key={project._id} md={4} className="mb-4">
-                        <Card
-                            className="project-card"
-                            style={{ cursor: 'pointer' }}
-                            onClick={() => handleCardClick(project._id)}
-                        >
-                            <Card.Img variant="top" src={`${project.images[1]}`} />
-                            <Card.Body>
-                                <Card.Title className="project-title">{project.nameOfProject}</Card.Title>
-                                <Card.Text className="project-details">
-                                    <span>תאריך יצירה: {project.projectCreationDate}</span><br />
-                                    <span>מזהה פרויקט: {project.id}</span>
-                                </Card.Text>
-                                <Button variant="primary" className="view-details-btn">הצג פרטים</Button>
-                            </Card.Body>
-                        </Card>
-                    </Col>
+                    <div key={project._id} className="project-card">
+                        {/* תמונה */}
+                        <img src={project.images[1]} alt={project.nameOfProject} className="project-image" />
+                        
+                        {/* פרטים */}
+                        <div className="project-details">
+                            <p className="project-title1">{project.nameOfProject}</p>
+                            <button className="view-details-btn" onClick={() => handleCardClick(project._id)}>צפה בפרויקט </button>
+                        </div>
+                    </div>
                 ))}
-            </Row>
-        </Container>
+            </div>
+        </div></>
     );
 };
 
