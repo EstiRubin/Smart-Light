@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import axios from 'axios';
 import { useDispatch } from "react-redux";
 import { addToCart } from "../redux/action/cartActions.js";
@@ -9,6 +9,8 @@ const ProductDetail = () => {
   const [product, setProduct] = useState(null);
   const [mainImage, setMainImage] = useState(null);
   const dispatch = useDispatch();
+  const navigate = useNavigate();
+  const [showPopup, setShowPopup] = useState(false);
 
   useEffect(() => {
     axios.get(`http://localhost:3000/api/product/${id}`)
@@ -22,6 +24,13 @@ const ProductDetail = () => {
   }, [id]);
 
   if (!product) return <p>Loading...</p>;
+  const handleAddToCart = () => {
+    dispatch(addToCart(product));
+    setShowPopup(true);
+    setTimeout(() => {
+      setShowPopup(false);
+    }, 5000);
+  };
 
   return (
     <>
@@ -96,6 +105,7 @@ const ProductDetail = () => {
           {product.Width && <p style={{ paddingRight: "10px" }}><strong>רוחב:</strong> {Array.isArray(product.Width) ? product.Width.join(", ") : product.Width}</p>}
           {product.Length && <p style={{ paddingRight: "10px" }}><strong>אורך:</strong> {Array.isArray(product.Length) ? product.Length.join(", ") : product.Length}</p>}
           {product.drill && <p style={{ paddingRight: "10px" }}><strong>קדח:</strong> {Array.isArray(product.drill) ? product.drill.join(", ") : product.drill}</p>}
+          {product.CylinderDiameter && <p style={{ paddingRight: "10px" }}><strong>קוטר צילינדר:</strong> {Array.isArray(product.CylinderDiameter) ? product.CylinderDiameter.join(", ") : product.CylinderDiameter}</p>}
           {product.IP && (
   <p style={{ paddingRight: "10px", direction: "rtl", textAlign: "right" }}>
     <strong>IP:</strong>
@@ -105,7 +115,7 @@ const ProductDetail = () => {
   </p>
 )}
        <button
-        onClick={() => dispatch(addToCart(product))}
+        onClick={handleAddToCart}
         style={{
           backgroundColor: "black",
           color: "white",
@@ -120,11 +130,42 @@ const ProductDetail = () => {
         }}
       >
         הוסף לעגלה
-      </button> </div>
+      </button> 
       </div>
-
-      {/* כפתור הוספה לעגלה */}
-      
+      </div>
+      {showPopup && (
+        <div style={{
+          position: "fixed",
+          bottom: "20px",
+          left: "50%",
+          transform: "translateX(-50%)",
+          background: "#000000FF",
+          color: "white",
+          padding: "15px 30px",
+          borderRadius: "8px",
+          boxShadow: "0px 4px 6px rgba(0,0,0,0.1)",
+          display: "flex",
+          alignItems: "center",
+          gap: "10px",
+        }}> <button 
+            style={{
+              background: "white",
+              color: "#000000FF",
+              border: "none",
+              padding: "5px 10px",
+              borderRadius: "5px",
+              cursor: "pointer",
+              backgroundColor:"white"
+            }} 
+            onClick={() => navigate("/cart")}
+          >
+            מעבר לעגלה 🛒
+          </button>
+          ✅ המוצר נוסף לעגלה!
+         
+          </div>
+      )
+    }
     </>
   );
 };
