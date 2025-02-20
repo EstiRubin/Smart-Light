@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { Link, useParams } from "react-router-dom";
 import "../css/ALLproduct.css";
+import product from "../img/Products.png"
 import search from "../img/search.jpg";
 const ProductList = () => {
   const [products, setProducts] = useState([]);
@@ -91,6 +92,7 @@ const ProductList = () => {
         </div>
       </div>
       <div className="product-list-container">
+
         <div className="product-cards-container">
           {products.length > 0 ? (
             products.map((product) => (
@@ -150,10 +152,13 @@ const ProductList = () => {
               </Link>
             ))
           ) : (
-            <p>No products found for this category.</p>
+            <p>אין מוצרים להצגה</p>
           )}
         </div>
+
+      <div className ="img-product"><img src={product} alt="products"/> </div>
       </div>
+
     </>
   );
 };
