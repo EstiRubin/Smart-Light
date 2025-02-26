@@ -11,6 +11,7 @@ const ProductDetail = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const [showPopup, setShowPopup] = useState(false);
+  const [startIndex, setStartIndex] = useState(0);
 
   useEffect(() => {
     axios.get(`http://localhost:3000/api/product/${id}`)
@@ -24,12 +25,25 @@ const ProductDetail = () => {
   }, [id]);
 
   if (!product) return <p>Loading...</p>;
+
   const handleAddToCart = () => {
     dispatch(addToCart(product));
     setShowPopup(true);
     setTimeout(() => {
       setShowPopup(false);
     }, 5000);
+  };
+
+  const handleNext = () => {
+    if (product.images.length > 4) {
+      setStartIndex((prevIndex) =>
+        prevIndex + 1 < product.images.length - 3 ? prevIndex + 1 : prevIndex
+      );
+    }
+  };
+
+  const handlePrev = () => {
+    setStartIndex((prevIndex) => (prevIndex > 0 ? prevIndex - 1 : 0));
   };
 
   return (
@@ -46,16 +60,17 @@ const ProductDetail = () => {
         border: "2px solid black",
       }}>
         
-        {/* גלריית תמונות */}
+        {/* גלריית תמונות עם חצים */}
         <div style={{
           display: "flex",
           alignItems: "center",
           borderRight: "2px solid black",
           paddingRight: "10px",
           flexDirection: "column",
-          justifyContent: "end",
+          justifyContent: "center",
         }}>
-          {product.images?.map((img, index) => (
+          <button onClick={handlePrev} disabled={startIndex === 0} style={{ cursor: "pointer" }}>⬆️</button>
+          {product.images?.slice(startIndex, startIndex + 4).map((img, index) => (
             <img
               key={index}
               src={img}
@@ -69,6 +84,7 @@ const ProductDetail = () => {
               onClick={() => setMainImage(img)}
             />
           ))}
+          <button onClick={handleNext} disabled={startIndex >= product.images.length - 4} style={{ cursor: "pointer" }}>⬇️</button>
         </div>
 
         {/* תמונה ראשית */}
@@ -107,32 +123,33 @@ const ProductDetail = () => {
           {product.drill && <p style={{ paddingRight: "10px" }}><strong>קדח:</strong> {Array.isArray(product.drill) ? product.drill.join(", ") : product.drill}</p>}
           {product.CylinderDiameter && <p style={{ paddingRight: "10px" }}><strong>קוטר צילינדר:</strong> {Array.isArray(product.CylinderDiameter) ? product.CylinderDiameter.join(", ") : product.CylinderDiameter}</p>}
           {product.IP && (
-  <p style={{ paddingRight: "10px", direction: "rtl", textAlign: "right" }}>
-    <strong>IP:</strong>
-    <span style={{ direction: "ltr", display: "inline-block" }}>
-      {product.IP}
-    </span>
-  </p>
-)}
-       <button
-        onClick={handleAddToCart}
-        style={{
-          backgroundColor: "black",
-          color: "white",
-          padding: "12px",
-          border: "none",
-          cursor: "pointer",
-          fontWeight: "bold",
-          marginTop: "10px",
-          display: "block",
-          width: "100%",
-          // margin: "20px auto"
-        }}
-      >
-        הוסף לעגלה
-      </button> 
+            <p style={{ paddingRight: "10px", direction: "rtl", textAlign: "right" }}>
+              <strong>IP:</strong>
+              <span style={{ direction: "ltr", display: "inline-block" }}>
+                {product.IP}
+              </span>
+            </p>
+          )}
+
+          <button
+            onClick={handleAddToCart}
+            style={{
+              backgroundColor: "black",
+              color: "white",
+              padding: "12px",
+              border: "none",
+              cursor: "pointer",
+              fontWeight: "bold",
+              marginTop: "10px",
+              display: "block",
+              width: "100%",
+            }}
+          >
+            הוסף לעגלה
+          </button>
+        </div>
       </div>
-      </div>
+
       {showPopup && (
         <div style={{
           position: "fixed",
@@ -147,25 +164,23 @@ const ProductDetail = () => {
           display: "flex",
           alignItems: "center",
           gap: "10px",
-        }}> <button 
+        }}>
+          <button 
             style={{
               background: "white",
               color: "#000000FF",
               border: "none",
               padding: "5px 10px",
               borderRadius: "5px",
-              cursor: "pointer",
-              backgroundColor:"white"
+              cursor: "pointer"
             }} 
             onClick={() => navigate("/cart")}
           >
             מעבר לעגלה 🛒
           </button>
           ✅ המוצר נוסף לעגלה!
-         
-          </div>
-      )
-    }
+        </div>
+      )}
     </>
   );
 };

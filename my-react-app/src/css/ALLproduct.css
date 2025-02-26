@@ -129,6 +129,7 @@ body {
 .title {
   font-size: 80px; /* גודל כותרת */
   font-weight: bold; /* עובי כותרת */
+  text-align: right;
 }
 
 .search-box {
@@ -193,3 +194,5 @@ body {
   gap: 5px; /* רווח קטן בין העיגולים */
   justify-content: flex-start; /* מעביר את העיגולים לימין */
 }
+
+

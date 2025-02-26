@@ -16,16 +16,17 @@ body {
 
 /* כותרת */
 .project-title {
-    text-align: center;
-    font-size: 28px;
+    text-align: right;
+    font-size: 60px;
     font-weight: bold;
     margin-bottom: 20px;
 }
 
 /* קרוסלת תמונות */
 .carousel-container {
-    width: 100%;
+    width: 80%;
     position: relative;
+    display: flex;
 }
 
 .main-image-container {
@@ -37,7 +38,7 @@ body {
 
 .main-image {
     width: 100%;
-    max-height: 500px;
+    /* max-height: 500px; */
     object-fit: cover;
     border-radius: 5px;
 }
@@ -78,6 +79,7 @@ body {
 .project-description {
     font-size: 16px;
     line-height: 1.5;
+    justify-content: flex-end;
 }
 
 /* מוצרים משולבים */
@@ -120,4 +122,54 @@ body {
 .product-card-link {
     text-decoration: none;
     color: black;
+}
+.images-container{
+    display: flex;
+    width: 100%;
+
+}
+.detiels-conteiners{
+    display: flex;
+    justify-content: flex-end;
+    width: 20%;
+    text-align: end;
+}
+.arrow-right-arrow .arrow-left-arrow{ 
+    background: transparent;
+    border: none;
+}
+.detiels-conteiners {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    text-align: right;
+    padding: 10px;
+}
+.project-container {
+    display: grid;
+    grid-template-columns: 3fr 2fr; /* 3 חלקים שמאליים לתמונות, 2 חלקים ימניים לפרטים */
+    height: 100vh; /* כל המסך */
+    padding: 20px;
+    align-items: end; /* מוודא שהתוכן והתמונות יסתיימו באותה שורה */
+}
+
+/* תמונות בצד שמאל */
+.images-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    grid-column: 1 / 2; /* הצד השמאלי */
+}
+
+/* פרטי הפרויקט בצד ימין */
+.details-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end; /* מוצמד לתחתית */
+    align-items: flex-start;
+    padding: 20px;
+    background: white;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    height: 100%; /* תופס את כל גובה הקונטיינר */
 }

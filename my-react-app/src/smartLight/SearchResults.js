@@ -1,63 +1,13 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import { Link, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import "../css/ALLproduct.css";
+import ProductCard from "./Product/ProductCard";
+import productImage from "../img/Products.png";
 
 const SearchResults = () => {
   const [products, setProducts] = useState([]);
   const { searchTerm } = useParams();
-
-  const colorMap = {
-    פליז:"#B5A642",
-    עץ:"#A67B5B",
-    רוז_גולד:"linear-gradient(45deg, #B76E79, #E6C7C2)",
-    שחור: "black",
-    בזלת: "darkgray",
-    אפור: "gray",
-    אפור_כהה: "darkgray",
-    אפור_בהיר: "lightgray",
-    לבן: "white",
-    כחול: "blue",
-    כחול_כהה: "darkblue",
-    כחול_בהיר: "lightblue",
-    תכלת: "skyblue",
-    ירוק: "green",
-    ירוק_כהה: "darkgreen",
-    ירוק_בהיר: "lightgreen",
-    צהוב: "yellow",
-    צהוב_כהה: "#CCCC00",
-    צהוב_בהיר: "#FFFF99",
-    כתום: "orange",
-    כתום_כהה: "#FF8C00",
-    כתום_בהיר: "#FFD580",
-    אדום: "red",
-    אדום_כהה: "darkred",
-    אדום_בהיר: "#FF6666",
-    בורדו: "#800000",
-    ורוד: "pink",
-    ורוד_כהה: "deeppink",
-    ורוד_בהיר: "lightpink",
-    סגול: "purple",
-    סגול_כהה: "darkpurple",
-    סגול_בהיר: "#D8BFD8",
-    חום: "brown",
-    חום_כהה: "#8B4513",
-    חום_בהיר: "#D2B48C",
-    בז: "beige",
-    שמנת: "#FFF5E1",
-    זהב: "linear-gradient(45deg, #FFD700, #E6BE8A, #CBA135)",
-    כסף: "silver",
-    ברונזה: "#CD7F32",
-    טורקיז: "turquoise",
-    טורקיז_כהה: "#008B8B",
-    טורקיז_בהיר: "lightseagreen",
-    מנטה: "#98FF98",
-    זית: "olive",
-    חרדל: "#FFDB58",
-    קורל: "coral",
-    סלמון: "salmon",
-    חציל: "#311432",
-  };
 
   useEffect(() => {
     if (searchTerm) {
@@ -74,70 +24,20 @@ const SearchResults = () => {
   return (
     <div>
       <h1>תוצאות חיפוש עבור: {searchTerm}</h1>
-     <div className="product-list-container">
-             <div className="product-cards-container">
-               {products.length > 0 ? (
-                 products.map((product) => (
-                   <Link
-                     style={{
-                       color: "black",
-                       textDecoration: "none",
-                     }}
-                     key={product._id}
-                     to={`/product/${product._id}`}
-                     className="product-link"
-                   >
-                     <div className="product-card">
-                       <img
-                         src={product.images[0]}
-                         alt={product.nameOfProduct}
-                         className="product-image"
-                       />
-                       <div className="product-divider"></div>
-                       <div className="product-info">
-                         <span className="product-name">
-                           {product.nameOfProduct}
-                         </span>
-                         <div className="product-colors">
-                           {product.colors.map((color, index) => {
-                             const colors = color.split(" "); // פיצול הצבעים
-                             const color1 = colorMap[colors[0].trim()] || "gray"; // אם לא נמצא, יהיה אפור
-                             const color2 = colors[1]
-                               ? colorMap[colors[1].trim()] || "gray"
-                               : color1; // אם אין צבע שני, משכפל את הראשון
-     
-                             return (
-                               <div
-                                 key={index}
-                                 className="color-circle"
-                                 style={{
-                                   background:
-                                     colors.length > 1
-                                       ? `linear-gradient(to right, ${color1} 50%, ${color2} 50%)`
-                                       : color1, // אם יש רק צבע אחד, פשוט רקע רגיל
-                                   width: "20px",
-                                   height: "20px",
-                                   borderRadius: "50%",
-                                  // margin: "2px",
-                                   border: color.includes("לבן")
-                                     ? "1px solid black"
-                                     : "none", // מסגרת אם יש צבע לבן
-                                 }}
-                               ></div>
-                             );
-                           })}
-                         </div>
-                       </div>
-                     </div>
-                   </Link>
-                 ))
-               ) : (
-                 <p>No products found for this category.</p>
-               )}
-             </div>
-             </div>
-             </div>
-            );
+      <div className="product-list-container">
+        <div className="product-cards-container">
+          {products.length > 0 ? (
+            products.map((product) => <ProductCard key={product._id} product={product} />)
+          ) : (
+            <p>No products found for this category.</p>
+          )}
+        </div><div className="img-product">
+          <img src={productImage} alt="products" />
+        </div>
+      </div>
+      
+    </div>
+  );
 };
 
 export default SearchResults;

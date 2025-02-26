@@ -67,7 +67,7 @@
 }
 
 /* פרטים של הפרויקט */
-.project-details1 {
+.project-details {
     width: 25%;
     display: flex;
     flex-direction: column;
@@ -78,7 +78,7 @@
 }
 
 /* כותרת */
-.project-title {
+.project-title1 {
     font-size: 14px;
     font-weight: bold;
     margin: 10px;
