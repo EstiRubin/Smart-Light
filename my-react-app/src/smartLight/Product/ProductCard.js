@@ -3,6 +3,9 @@ import { Link } from "react-router-dom";
 import ColorCircle from "./ColorCircle";
 
 const ProductCard = ({ product }) => {
+  if (!product || !product.images || product.images.length === 0) {
+    return <div>No product data available</div>;
+  }
   return (
     <Link key={product._id} to={`/product/${product._id}`} className="product-link">
       <div className="product-card">

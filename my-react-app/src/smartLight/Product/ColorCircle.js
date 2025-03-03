@@ -11,10 +11,7 @@ const ColorCircle = ({ color }) => {
   const colors = normalizedColor.split(" ");
   const color1 = colorMap[colors[0]] || "gray"; // צבע ראשון או אפור
   const color2 = colors[1] ? colorMap[colors[1]] || "gray" : color1; // צבע שני אם קיים
-  console.log("Received color:", color);
-  console.log("Normalized color:", normalizedColor);
-  console.log("Mapped color1:", color1, "Mapped color2:", color2);
-  console.log("Color Map Keys:", Object.keys(colorMap));
+
   
   return (
     <div

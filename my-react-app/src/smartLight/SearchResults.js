@@ -31,7 +31,8 @@ const SearchResults = () => {
           ) : (
             <p>No products found for this category.</p>
           )}
-        </div><div className="img-product">
+        </div>
+        <div className="img-product">
           <img src={productImage} alt="products" />
         </div>
       </div>

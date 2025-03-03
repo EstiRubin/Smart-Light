@@ -186,7 +186,13 @@ body {
   margin-bottom: 5px;
   display: block;
   flex-grow: 1; /* גורם לטקסט לתפוס את הצד הימני */
+  color: #000000;
+  border: transparent;
+  text-decoration: none;
 
+}
+a:hover{
+  text-decoration: none;
 }
 
 .product-colors {
