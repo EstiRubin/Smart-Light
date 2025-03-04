@@ -3,7 +3,8 @@ import { useNavigate, useParams } from 'react-router-dom';
 import axios from 'axios';
 import { useDispatch } from "react-redux";
 import { addToCart } from "../redux/action/cartActions.js";
-
+import arrow from "../img/חץ.png"
+import { getSimilarProducts } from './api.js';
 const ProductDetail = () => {
   const { id } = useParams();
   const [product, setProduct] = useState(null);
@@ -12,20 +13,21 @@ const ProductDetail = () => {
   const navigate = useNavigate();
   const [showPopup, setShowPopup] = useState(false);
   const [startIndex, setStartIndex] = useState(0);
+  const [similarProducts, setSimilarProducts] = useState([]);
 
   useEffect(() => {
     axios.get(`http://localhost:3000/api/product/${id}`)
       .then(response => {
         setProduct(response.data);
+        getSimilarProducts(id).then(setSimilarProducts);
+
         if (response.data.images?.length > 0) {
           setMainImage(response.data.images[0]);
         }
       })
       .catch(error => console.error(error));
   }, [id]);
-
   if (!product) return <p>Loading...</p>;
-
   const handleAddToCart = () => {
     dispatch(addToCart(product));
     setShowPopup(true);
@@ -33,7 +35,6 @@ const ProductDetail = () => {
       setShowPopup(false);
     }, 5000);
   };
-
   const handleNext = () => {
     if (product.images.length > 4) {
       setStartIndex((prevIndex) =>
@@ -41,11 +42,9 @@ const ProductDetail = () => {
       );
     }
   };
-
   const handlePrev = () => {
     setStartIndex((prevIndex) => (prevIndex > 0 ? prevIndex - 1 : 0));
   };
-
   return (
     <>
       <h1 style={{ textAlign: "right", paddingRight: "11%", paddingBottom: "1%" }}>{product.nameOfProduct}</h1>
@@ -69,7 +68,7 @@ const ProductDetail = () => {
           flexDirection: "column",
           justifyContent: "center",
         }}>
-          <button onClick={handlePrev} disabled={startIndex === 0} style={{ cursor: "pointer" }}>⬆️</button>
+          <button onClick={handlePrev} disabled={startIndex === 0} style={{ cursor: "pointer",background:"transparent", border:"none"}}><img src={arrow} alt=" חץ" style={{width: "10px" ,transform:"rotate(180deg)" }}></img></button>
           {product.images?.slice(startIndex, startIndex + 4).map((img, index) => (
             <img
               key={index}
@@ -84,7 +83,7 @@ const ProductDetail = () => {
               onClick={() => setMainImage(img)}
             />
           ))}
-          <button onClick={handleNext} disabled={startIndex >= product.images.length - 4} style={{ cursor: "pointer" }}>⬇️</button>
+          <button onClick={handleNext} className='arrow' disabled={startIndex >= product.images.length - 4} style={{ cursor: "pointer" ,background:"transparent", border:"none"}}> <img src={arrow} alt=" חץ" style={{width: "10px" }}></img></button>
         </div>
 
         {/* תמונה ראשית */}
@@ -115,13 +114,13 @@ const ProductDetail = () => {
           {product.colors?.length > 0 && <p style={{ paddingRight: "10px" }}><strong>צבע גימור:</strong> {product.colors.join(", ")}</p>}
           {product.watt?.length>0 && <p style={{ paddingRight: "10px" }}><strong>מקור אור:</strong> {product.watt.join(", ")}</p>}
           {product.lightColors && <p style={{ paddingRight: "10px" }}><strong>גוון אור:</strong> {Array.isArray(product.lightColors) ? product.lightColors.join(", ") : product.lightColors}</p>}
-          {product.Diameter && <p style={{ paddingRight: "10px" }}><strong>קוטר:</strong> {Array.isArray(product.Diameter) ? product.Diameter.join(", ") : product.Diameter}</p>}
-          {product.Height && <p style={{ paddingRight: "10px" }}><strong>גובה:</strong> {Array.isArray(product.Height) ? product.Height.join(", ") : product.Height}</p>}
-          {product.Depth && <p style={{ paddingRight: "10px" }}><strong>עומק:</strong> {Array.isArray(product.Depth) ? product.Depth.join(", ") : product.Depth}</p>}
-          {product.Width && <p style={{ paddingRight: "10px" }}><strong>רוחב:</strong> {Array.isArray(product.Width) ? product.Width.join(", ") : product.Width}</p>}
-          {product.Length && <p style={{ paddingRight: "10px" }}><strong>אורך:</strong> {Array.isArray(product.Length) ? product.Length.join(", ") : product.Length}</p>}
-          {product.drill && <p style={{ paddingRight: "10px" }}><strong>קדח:</strong> {Array.isArray(product.drill) ? product.drill.join(", ") : product.drill}</p>}
-          {product.CylinderDiameter && <p style={{ paddingRight: "10px" }}><strong>קוטר צילינדר:</strong> {Array.isArray(product.CylinderDiameter) ? product.CylinderDiameter.join(", ") : product.CylinderDiameter}</p>}
+          {product.Diameter && <p style={{ paddingRight: "10px" }}><strong>קוטר:</strong> {Array.isArray(product.Diameter) ? product.Diameter.join(", ") : product.Diameter}MM</p>}
+          {product.Height && <p style={{ paddingRight: "10px" }}><strong>גובה:</strong> {Array.isArray(product.Height) ? product.Height.join(", ") : product.Height}MM</p>}
+          {product.Depth && <p style={{ paddingRight: "10px" }}><strong>עומק:</strong> {Array.isArray(product.Depth) ? product.Depth.join(", ") : product.Depth}MM</p>}
+          {product.Width && <p style={{ paddingRight: "10px" }}><strong>רוחב:</strong> {Array.isArray(product.Width) ? product.Width.join(", ") : product.Width}MM</p>}
+          {product.Length && <p style={{ paddingRight: "10px" }}><strong>אורך:</strong> {Array.isArray(product.Length) ? product.Length.join(", ") : product.Length}MM</p>}
+          {product.drill && <p style={{ paddingRight: "10px" }}><strong>קדח:</strong> {Array.isArray(product.drill) ? product.drill.join(", ") : product.drill}MM</p>}
+          {product.CylinderDiameter && <p style={{ paddingRight: "10px" }}><strong>קוטר צילינדר:</strong> {Array.isArray(product.CylinderDiameter) ? product.CylinderDiameter.join(", ") : product.CylinderDiameter}MM</p>}
           {product.IP && (
             <p style={{ paddingRight: "10px", direction: "rtl", textAlign: "right" }}>
               <strong>IP:</strong>
@@ -130,6 +129,7 @@ const ProductDetail = () => {
               </span>
             </p>
           )}
+             
 
           <button
             onClick={handleAddToCart}
@@ -149,6 +149,15 @@ const ProductDetail = () => {
           </button>
         </div>
       </div>
+      <h3>מוצרים דומים:</h3>
+            <div className="similar-products">
+                {similarProducts.map(similar => (
+                    <a key={similar._id} href={`/product/${similar._id}`} className="card">
+                        <img src={similar.images[0]} alt={similar.nameOfProduct} />
+                        <p>{similar.nameOfProduct}</p>
+                    </a>
+                ))}
+            </div>
 
       {showPopup && (
         <div style={{

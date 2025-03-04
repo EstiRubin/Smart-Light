@@ -68,6 +68,22 @@ class ProductService extends BaseService {
       throw new Error("Error fetching products by name");
     }
   }
+  async getSimilarProducts (productId) {
+    const product = await Product.findById(productId);
+    if (!product) throw new Error("Product not found");
+
+    const similarProducts = await Product.find({
+        _id: { $ne: productId },  // לא להחזיר את המוצר עצמו
+        $or: [
+            { tags: { $in: product.tags } },       // חיפוש לפי תגיות משותפות
+            { categoryID: { $in: product.categoryID } } // חיפוש לפי קטגוריה משותפת
+        ]
+    }).limit(5); // מחזירים רק 5 תוצאות
+
+    return similarProducts;
+};
+
+
   
   
 }

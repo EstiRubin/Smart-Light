@@ -11,5 +11,6 @@ router.get('/:id', productController.getById);
 router.post('/', productController.add);
 router.put('/:id', productController.update);
 router.delete('/:id', productController.delete);
+router.get("/:id/recommendations", productController.getRecommendedProducts);
 
 export default router;
