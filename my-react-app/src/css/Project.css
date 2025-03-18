@@ -1,4 +1,3 @@
-/* הסרת הקו האנכי מהמילה PROJECT */
 .project-line {
     writing-mode: vertical-rl;
     text-orientation: upright;
@@ -23,26 +22,23 @@
     width: 100%;
 }
 
-/* אזור הכרטיסים */
 .projects-wrapper {
     width: 85%;
     display: flex;
     flex-direction: column;
-    align-items: flex-end; /* כל הכרטיסים יהיו בצד הימני */
-    margin-left: auto; /* מוודא שהכרטיסים צמודים לימין */
+    align-items: flex-end; 
+    margin-left: auto; 
 }
 
-/* החלק של PROJECT */
 .project-sidebar {
-    width: 15%; /* 1/5 מהמסך */
+    width: 15%; 
     display: flex;
     justify-content: center;
     align-items: center;
     position: relative;
-    height: 100vh; /* כדי לוודא שהמילה PROJECT באמצע */
+    height: 100vh; 
 }
 
-/* כרטיס הפרויקט */
 .project-card {
     display: flex;
     width: 90%;
@@ -50,23 +46,20 @@
     border: 2px solid black;
     margin: 0;
     overflow: hidden;
-    justify-content: flex-end; /* מוודא שהכרטיסים יהיו בצד הימני */
+    justify-content: flex-end;
 }
 
 
-/* לסירוגין צדדים */
 .project-card:nth-child(even) {
     flex-direction: row-reverse;
 }
 
-/* תמונת הפרויקט */
 .project-image {
     width: 97%;
     height: 100%;
     object-fit: cover;
 }
 
-/* פרטים של הפרויקט */
 .project-details {
     width: 25%;
     display: flex;
@@ -74,19 +67,13 @@
     justify-content: flex-end;
     text-align: right;
     background: white;
-    /* padding: 15px; */
 }
 
-/* כותרת */
 .project-title1 {
     font-size: 14px;
     font-weight: bold;
     margin: 10px;
 }
-
-
-
-/* כפתור - עכשיו דבוק לקצה */
 .view-details-btn {
     width: 100%;
     background-color: black;
@@ -95,7 +82,7 @@
     padding: 15px;
     cursor: pointer;
     margin: 0;
-    align-self: stretch; /* הכפתור מתפרס על כל הרוחב */
+    align-self: stretch; 
 }
 
 .view-details-btn:hover {

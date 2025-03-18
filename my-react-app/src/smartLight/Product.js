@@ -4,7 +4,7 @@ import axios from 'axios';
 import { useDispatch } from "react-redux";
 import { addToCart } from "../redux/action/cartActions.js";
 import arrow from "../img/חץ.png";
-import { getSimilarProducts } from './api.js';
+import { getProductsById, getSimilarProducts } from './api.js';
 import '../css/Product.css';
 import ColorCircle from "./Product/ColorCircle";
 

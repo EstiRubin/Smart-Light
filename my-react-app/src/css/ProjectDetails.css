@@ -1,6 +1,4 @@
-/* עיצוב כללי */
 body {
-    font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
     background-color: white;
@@ -14,7 +12,6 @@ body {
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
 }
 
-/* כותרת */
 .project-title {
     text-align: right;
     font-size: 60px;
@@ -22,31 +19,22 @@ body {
     margin-bottom: 20px;
 }
 
-/* קרוסלת תמונות */
 .carousel-container {
     width: 80%;
     position: relative;
     display: flex;
 }
-
-
-
 .main-image {
     width: 100%;
-    /* max-height: 500px; */
     object-fit: cover;
-    /* border-radius: 5px; */
     border: 2px solid black;   
       height: 100%;
-
 }
-
 .thumbnail {
     width: 130px;
     height: 100px;
     object-fit: cover;
     cursor: pointer;
-    /* border-radius: 3px; */
     transition: transform 0.2s;
     border: 2px solid black; 
 }
@@ -59,7 +47,6 @@ body {
     border: 3px solid #000;
 }
 
-/* מידע על הפרויקט */
 .project-info {
     margin-top: 20px;
     padding: 15px;
@@ -74,7 +61,6 @@ body {
     justify-content: flex-end;
 }
 
-/* מוצרים משולבים */
 .product-cards {
     margin-top: 40px;
     padding-top: 20px;
@@ -123,7 +109,7 @@ body {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    grid-column: 1 / 2; /* הצד השמאלי */
+    grid-column: 1 / 2; 
 }
 .detiels-conteiners{
     display: flex;
@@ -143,29 +129,19 @@ body {
     padding: 10px;
 }
 .project-container {
-    /* display: grid; */
-    grid-template-columns: 3fr 2fr; /* 3 חלקים שמאליים לתמונות, 2 חלקים ימניים לפרטים */
-    /* height: 100vh; כל המסך */
-    /* padding: 20px; */
-    align-items: end; /* מוודא שהתוכן והתמונות יסתיימו באותה שורה */
+    grid-template-columns: 3fr 2fr; 
+    align-items: end; 
 }
-
-/* תמונות בצד שמאל */
-
-
-/* פרטי הפרויקט בצד ימין */
 .details-container {
     display: flex;
     flex-direction: column;
-    justify-content: flex-end; /* מוצמד לתחתית */
+    justify-content: flex-end; 
     align-items: flex-start;
     padding: 20px;
     background: white;
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
-    height: 100%; /* תופס את כל גובה הקונטיינר */
+    height: 100%; 
 }
-
-
 .gallery-container {
     display: flex;
     width: 100%;
@@ -175,7 +151,6 @@ body {
   
   .images-section {
     width: 180vh;
-    /* display: flex; */
     flex-direction: column;
     align-items: center;
     justify-content: center;
@@ -189,10 +164,7 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
-  }
-  
-  
-  
+  }  
   .arrow-left,
   .arrow-right {
     position: absolute;
@@ -236,16 +208,12 @@ body {
   .designer-details {
     width: 25%;
     padding: 20px;
-    /* background-color: #f4f4f4; */
     display: flex;
     flex-direction: column;
     justify-content: end;
     text-align: right;
-    /* margin-bottom: 80px; */
-    /* border-left: 2px solid #ddd; */
   }
   .FewWords{
-    /* width: 80%; */
     text-align: start;
     font-size: 18px;
     align-items: center;

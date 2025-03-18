@@ -10,8 +10,8 @@
   top: 0;
   left: 0;
   width: 100%;
-  height: 10px; /* עובי הקו */
-  background-color: black; /* צבע הקו */
+  height: 10px; 
+  background-color: black; 
 }
 
 .image-side {

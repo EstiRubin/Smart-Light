@@ -12,9 +12,8 @@ const ProjectDetails = () => {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
 
   const API_URL = `http://localhost:3001/api/project/${id}`; // כתובת ה-API
-  // const API_URL_PRODUCT = `http://localhost:3001/api/product`; // כתובת ה-API
   const [showAll, setShowAll] = useState(false);
-  const maxVisible = 5; // Number of images to show initially
+  const maxVisible = 5;
 
   const visibleImages = showAll
     ? project?.images
@@ -138,7 +137,6 @@ const ProjectDetails = () => {
               {project?.combinedProducts?.length > 0 ? (
                 project.combinedProducts.map((product) =>
                   product ? (
-                    // <ProductCard key={product._id} product={product} />
                     <Link
                       key={product._id}
                       to={`/product/${product._id}`}
@@ -170,55 +168,9 @@ const ProjectDetails = () => {
               )}
             </div>
 
-            {/* <div className="product-card-container">
-              {project.combinedProducts &&
-
-                project.combinedProducts.map((p, index) => {
-                  // <ProductCard></ProductCard>
-                  const currentProduct = product && product[index];
-                  if (!currentProduct) {
-                    return (
-                      <Card key={index} className="product-card">
-                        <Card.Body>
-                          <Card.Title>Unknown Product</Card.Title>
-                          <Card.Text>No data available</Card.Text>
-                        </Card.Body>
-                      </Card>
-                    );
-                  }
-                  return (
-                    <Link
-                      key={currentProduct._id}
-                      to={`/product/${currentProduct._id}`}
-                      className="product-card-link"
-                    >
-                      <Card className="product-card">
-                        <Card.Img
-                          variant="top"
-                          src={
-                            currentProduct.images && currentProduct.images[0]
-                          }
-                          alt={currentProduct.nameOfProduct || "Product Image"}
-                          className="product-thumbnail"
-                        />
-                        <Card.Body>
-                          <Card.Title>
-                            {currentProduct.nameOfProduct || "Unknown Product"}
-                          </Card.Title>
-                          <Card.Text>
-                            <strong>Price:</strong>{" "}
-                            {currentProduct.price || "N/A"} ₪
-                          </Card.Text>
-                        </Card.Body>
-                      </Card>
-                    </Link>
-                  );
-                })}
-            </div>*/}
           </div>
         </>
       )}
-      {/* </div> */}
     </>
   );
 };
