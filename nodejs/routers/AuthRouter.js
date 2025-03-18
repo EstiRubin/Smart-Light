@@ -4,7 +4,7 @@ import {
   sendTempPassword,
   loginWithTempPassword,
 } from "../controllers/AuthController.js";
-import "../utils/passportGoogle.js"; // Load Google Passport Strategy
+// import "../utils/passportGoogle.js"; // Load Google Passport Strategy
 
 const router = express.Router();
 
