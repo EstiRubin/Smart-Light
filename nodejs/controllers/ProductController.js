@@ -42,6 +42,14 @@ async getBynameOrMKT(req, res) {
     res.status(500).json({ message: "Server error" });
   }
 }
+async getRecommendedProducts (req, res)  {
+  try {
+      const recommendations = await this.service.getSimilarProducts(req.params.id);
+      res.json(recommendations);
+  } catch (error) {
+      res.status(500).json({ message: error.message });
+  }
+};
 }
 
 export default new ProductController(service);

@@ -2,24 +2,22 @@ import "../css/ProjectDetails.css";
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { useParams, Link } from "react-router-dom";
-import Card from "react-bootstrap/Card";
-import ProductCard from "./Product/ProductCard";
 import ColorCircle from "./Product/ColorCircle";
 
 const ProjectDetails = () => {
   const { id } = useParams(); // מזהה הפרויקט מהנתיב
   const [project, setProject] = useState(null);
-  const [product, setProduct] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
 
   const API_URL = `http://localhost:3001/api/project/${id}`; // כתובת ה-API
-  // const API_URL_PRODUCT = `http://localhost:3001/api/product`; // כתובת ה-API
   const [showAll, setShowAll] = useState(false);
-  const maxVisible = 5; // Number of images to show initially
+  const maxVisible = 5;
 
-  const visibleImages = showAll ? project?.images : project?.images?.slice(0, maxVisible);
+  const visibleImages = showAll
+    ? project?.images
+    : project?.images?.slice(0, maxVisible);
 
   useEffect(() => {
     axios
@@ -34,20 +32,6 @@ const ProjectDetails = () => {
         setLoading(false);
       });
   }, [id]);
-
-  // useEffect(() => {
-  //   axios
-  //     .get(API_URL_PRODUCT)
-  //     .then((response) => {
-  //       setProduct(response.data);
-  //       console.log(response.data);
-  //       setLoading(false);
-  //     })
-  //     .catch((error) => {
-  //       setError(error);
-  //       setLoading(false);
-  //     });
-  // }, [id]);
 
   const handleNextImage = () => {
     if (project?.images?.length) {
@@ -110,19 +94,20 @@ const ProjectDetails = () => {
                 </div>
 
                 <div className="thumbnail-gallery">
-  <div className="thumbnail-container">
-    {project?.images?.map((image, index) => (
-      <img
-        key={index}
-        src={image}
-        alt={`Thumbnail ${index + 1}`}
-        className={`thumbnail ${index === currentImageIndex ? "active" : ""}`}
-        onClick={() => handleImageSelect(index)}
-      />
-    ))}
-  </div>
-</div>
-
+                  <div className="thumbnail-container">
+                    {project?.images?.map((image, index) => (
+                      <img
+                        key={index}
+                        src={image}
+                        alt={`Thumbnail ${index + 1}`}
+                        className={`thumbnail ${
+                          index === currentImageIndex ? "active" : ""
+                        }`}
+                        onClick={() => handleImageSelect(index)}
+                      />
+                    ))}
+                  </div>
+                </div>
               </div>
               <div className="designer-details">
                 <p>
@@ -137,33 +122,45 @@ const ProjectDetails = () => {
               </div>
             </div>
           </div>
-<div className="FewWords">
-  <h1>אתגרי הפרוייקט:</h1>
-  <h3>
-  אתגרי תאורה ופתרונות יצירתיים בדירה:</h3>
-  {project.FewWordsAboutTheProject}
-</div>
-          <div className="product-cards">
-            <div className="product-cards-container">
+          <div className="FewWords">
+            <h1>אתגרי הפרוייקט:</h1>
+            <h3>אתגרי תאורה ופתרונות יצירתיים בדירה:</h3>
+            {project.FewWordsAboutTheProject}
+          </div>
+          <div className="product-cards">  
+            <div className="FewWords">
+                                  <h1 > מוצרים משולבים בפרויקט:  </h1>
+
+            </div>
+
+            <div className="product-cards-container1">
               {project?.combinedProducts?.length > 0 ? (
                 project.combinedProducts.map((product) =>
                   product ? (
-                    // <ProductCard key={product._id} product={product} />
-                    <Link key={product._id} to={`/product/${product._id}`} className="product-link">
-                    <div className="product-card">
-                      <img src={product.images[0]} alt={product.nameOfProduct} className="product-image" />
-                      <div className="product-divider"></div>
-                      <div className="product-info">
-                        <span className="product-name">{product.nameOfProduct}</span>
-                        <div className="product-colors">
-                          {product.colors.map((color, index) => (
-                            <ColorCircle key={index} color={color} />
-                          ))}
+                    <Link
+                      key={product._id}
+                      to={`/product/${product._id}`}
+                      className="product-link"
+                    >
+                      <div className="product-card1">
+                        <img
+                          src={product.images[0]}
+                          alt={product.nameOfProduct}
+                          className="product-image1"
+                        />
+                        <div className="product-divider"></div>
+                        <div className="product-info">
+                          <span className="product-name">
+                            {product.nameOfProduct}
+                          </span>
+                          <div className="product-colors">
+                            {product.colors.map((color, index) => (
+                              <ColorCircle key={index} color={color} />
+                            ))}
+                          </div>
                         </div>
                       </div>
-                    </div>
-                  </Link>
-
+                    </Link>
                   ) : null
                 )
               ) : (
@@ -171,55 +168,9 @@ const ProjectDetails = () => {
               )}
             </div>
 
-            {/* <div className="product-card-container">
-              {project.combinedProducts &&
-
-                project.combinedProducts.map((p, index) => {
-                  // <ProductCard></ProductCard>
-                  const currentProduct = product && product[index];
-                  if (!currentProduct) {
-                    return (
-                      <Card key={index} className="product-card">
-                        <Card.Body>
-                          <Card.Title>Unknown Product</Card.Title>
-                          <Card.Text>No data available</Card.Text>
-                        </Card.Body>
-                      </Card>
-                    );
-                  }
-                  return (
-                    <Link
-                      key={currentProduct._id}
-                      to={`/product/${currentProduct._id}`}
-                      className="product-card-link"
-                    >
-                      <Card className="product-card">
-                        <Card.Img
-                          variant="top"
-                          src={
-                            currentProduct.images && currentProduct.images[0]
-                          }
-                          alt={currentProduct.nameOfProduct || "Product Image"}
-                          className="product-thumbnail"
-                        />
-                        <Card.Body>
-                          <Card.Title>
-                            {currentProduct.nameOfProduct || "Unknown Product"}
-                          </Card.Title>
-                          <Card.Text>
-                            <strong>Price:</strong>{" "}
-                            {currentProduct.price || "N/A"} ₪
-                          </Card.Text>
-                        </Card.Body>
-                      </Card>
-                    </Link>
-                  );
-                })}
-            </div>*/}
           </div>
         </>
       )}
-      {/* </div> */}
     </>
   );
 };

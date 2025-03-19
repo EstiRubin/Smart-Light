@@ -10,10 +10,10 @@ import ProjectDetails from './smartLight/ProjectDetails';
 import whatsapp from './img/whatsapp.png'
 import  './css/whatsapp.css'
 import Footer from './smartLight/Footer';
-import EmailInputPage from './smartLight/Auth/EmailInputPage';
-import CodeVerificationPage from './smartLight/Auth/CodeVerificationPage';
+// import EmailInputPage from './smartLight/Auth/EmailInputPage';
+// import CodeVerificationPage from './smartLight/Auth/CodeVerificationPage';
 import ProductList from './smartLight/AllProducts';
-import GoogleSignIn from './smartLight/Auth/GoogleSignIn';
+// import GoogleSignIn from './smartLight/Auth/GoogleSignIn';
 import CartPage from './smartLight/pages/CartPage';
 import SearchResults from './smartLight/SearchResults';
 function App() {
@@ -25,9 +25,9 @@ function App() {
         <Routes>
 
         <Route exact path="/" element={<Home></Home>} />
-        <Route exact path="/GoogleSignIn" element={<GoogleSignIn></GoogleSignIn>} />
-        <Route path="/EmailInputPage" element={<EmailInputPage/>} />
-        <Route path="/verify-code" element={<CodeVerificationPage />} /> 
+        {/* <Route exact path="/GoogleSignIn" element={<GoogleSignIn></GoogleSignIn>} /> */}
+        {/* <Route path="/EmailInputPage" element={<EmailInputPage/>} /> */}
+        {/* <Route path="/verify-code" element={<CodeVerificationPage />} />  */}
         <Route exact path="/About" element={<About></About>} />
         <Route path="/AllProducts/:category" element={<ProductList />} />
           <Route path="/product/:id" element={<Product />} />

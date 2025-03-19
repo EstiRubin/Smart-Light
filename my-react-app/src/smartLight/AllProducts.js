@@ -4,6 +4,7 @@ import { Link, useParams } from "react-router-dom";
 import "../css/ALLproduct.css";
 import productImage from "../img/Products.png";
 import ColorCircle from "./Product/ColorCircle";
+import { getProductsBycategory } from "./api";
 
 const ProductList = () => {
   const [products, setProducts] = useState([]);
@@ -11,17 +12,11 @@ const ProductList = () => {
 
   useEffect(() => {
     if (category) {
-      axios
-        .get(`http://localhost:3000/api/product/category/${category}`)
-        .then((response) => setProducts(response.data))
-        .catch((error) => {
-          console.error(error);
-          setProducts([]);
-        });
+      getProductsBycategory(category).then(setProducts);
     }
   }, [category]);
 
-  const removeUnderscores = (str) => str.replace(/_/g, " "); // מחליף קווים תחתונים ברווחים
+  const removeUnderscores = (str) => str.replace(/_/g, " ");
 
   return (
     <>
@@ -48,7 +43,9 @@ const ProductList = () => {
                   />
                   <div className="product-divider"></div>
                   <div className="product-info">
-                    <span className="product-name">{product.nameOfProduct}</span>
+                    <span className="product-name">
+                      {product.nameOfProduct}
+                    </span>
                     <div className="product-colors">
                       {product.colors.map((color, index) => (
                         <ColorCircle key={index} color={color} />

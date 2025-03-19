@@ -1,0 +1,20 @@
+{
+  "files": {
+    "main.css": "/static/css/main.6ff97292.css",
+    "main.js": "/static/js/main.6bc47fd1.js",
+    "static/js/453.ad6eb26e.chunk.js": "/static/js/453.ad6eb26e.chunk.js",
+    "static/media/home.jpg": "/static/media/home.f11cebabece49407f53a.jpg",
+    "static/media/לוגו סמארטלייט.jpg": "/static/media/לוגו סמארטלייט.9a8365645a7cb6395199.jpg",
+    "static/media/whatsapp.png": "/static/media/whatsapp.3b5b575ce4ff74e52864.png",
+    "static/media/חץ.png": "/static/media/חץ.96906b80e17f07c68877.png",
+    "static/media/cart.svg": "/static/media/cart.00816e9d883d15e59c118bdfce4ce34f.svg",
+    "index.html": "/index.html",
+    "main.6ff97292.css.map": "/static/css/main.6ff97292.css.map",
+    "main.6bc47fd1.js.map": "/static/js/main.6bc47fd1.js.map",
+    "453.ad6eb26e.chunk.js.map": "/static/js/453.ad6eb26e.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.6ff97292.css",
+    "static/js/main.6bc47fd1.js"
+  ]
+}

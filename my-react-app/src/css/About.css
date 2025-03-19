@@ -1,47 +1,68 @@
 .about-container {
-    direction: rtl;
-    text-align: right;
-    margin: 20px auto;
-    padding: 20px;
-    max-width: 800px;
-    font-family: Arial, sans-serif;
-    background-color: #f9f9f9;
-    border: 1px solid #ddd;
-    border-radius: 8px;
+  background-color: white;
+  color: black;
+  border: 2px solid black;
+  padding: 2rem;
+  max-width: 800px;
+  margin: 2rem auto;
+  border-radius: 10px;
+  box-shadow: 4px 4px 0 black;
+  text-align: center;
+}
+
+.about-title {
+  font-size: 2rem;
+  font-weight: bold;
+  border-bottom: 2px solid black;
+  padding-bottom: 0.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.about-intro {
+  font-size: 1.2rem;
+  margin-bottom: 1rem;
+}
+
+.about-description, .about-text, .about-closing {
+  font-size: 1rem;
+  color: #444;
+  line-height: 1.6;
+  margin-bottom: 1.5rem;
+}
+
+.about-subtitle {
+  font-size: 1.5rem;
+  font-weight: 600;
+  border-bottom: 2px solid black;
+  padding-bottom: 0.3rem;
+  margin-bottom: 1rem;
+  text-align: left;
+}
+
+.about-list {
+  text-align: left;
+  list-style-type: none;
+  padding: 0;
+}
+
+.about-list li {
+  margin-bottom: 0.8rem;
+  font-size: 1rem;
+  color: #222;
+}
+
+.about-list li strong {
+  color: black;
+}
+
+@media (max-width: 768px) {
+  .about-container {
+    padding: 1.5rem;
   }
-  
   .about-title {
-    font-size: 2rem;
-    color: #333;
-    margin-bottom: 10px;
+    font-size: 1.8rem;
   }
-  
-  .about-intro {
-    font-size: 1.2rem;
-    font-weight: bold;
-    color: #555;
-    margin-bottom: 20px;
-  }
-  
-  .about-description, .about-text, .about-closing {
-    font-size: 1rem;
-    color: #333;
-    margin-bottom: 15px;
-  }
-  
   .about-subtitle {
-    font-size: 1.5rem;
-    color: #444;
-    margin-top: 20px;
+    font-size: 1.3rem;
   }
-  
-  .about-list {
-    list-style-type: disc;
-    padding-right: 20px;
-    margin-bottom: 20px;
-  }
-  
-  .about-list li {
-    margin-bottom: 10px;
-  }
-  
+}
