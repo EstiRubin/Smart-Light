@@ -1,0 +1,7 @@
+version: 1
+routes:
+  - src: /.*
+    status: 200
+    headers:
+      Content-Type: text/html
+    dest: /
