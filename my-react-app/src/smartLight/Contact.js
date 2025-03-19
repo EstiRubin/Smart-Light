@@ -509,147 +509,147 @@
 
 
 
-// // import React, { useEffect, useState, useRef } from 'react';
-// // import L from 'leaflet';
-// // import '../css/Contact.css';
-
-// // delete L.Icon.Default.prototype._getIconUrl;
-// // L.Icon.Default.mergeOptions({
-// //     iconRetinaUrl: require('leaflet/dist/images/marker-icon-2x.png'),
-// //     iconUrl: require('leaflet/dist/images/marker-icon.png'),
-// //     shadowUrl: require('leaflet/dist/images/marker-shadow.png'),
-// // });
-
-// // const Contact = () => {
-// //     const [coordinates, setCoordinates] = useState({ lat: 31.7969, lng: 35.2134 });
-// //     const mapRef = useRef(null);
-// //     const markerRef = useRef(null);
-
-// //     useEffect(() => {
-// //         const fetchCoordinates = async () => {
-// //             try {
-// //                 const response = await fetch(
-// //                     "https://nominatim.openstreetmap.org/search?format=json&q=טללים 23 ירושלים"
-// //                 );
-// //                 const data = await response.json();
-// //                 if (data.length > 0) {
-// //                     setCoordinates({
-// //                         lat: parseFloat(data[0].lat),
-// //                         lng: parseFloat(data[0].lon),
-// //                     });
-// //                 }
-// //             } catch (error) {
-// //                 console.error("Error fetching coordinates:", error);
-// //             }
-// //         };
-// //         fetchCoordinates();
-// //     }, []);
-
-// //     useEffect(() => {
-// //         if (!mapRef.current) {
-// //             mapRef.current = L.map('map').setView([coordinates.lat, coordinates.lng], 15);
-// //             L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', { maxZoom: 19 }).addTo(mapRef.current);
-// //             markerRef.current = L.marker([coordinates.lat, coordinates.lng]).addTo(mapRef.current);
-// //         } else {
-// //             mapRef.current.setView([coordinates.lat, coordinates.lng], 15);
-// //             markerRef.current.setLatLng([coordinates.lat, coordinates.lng]);
-// //         }
-
-// //         // לוודא שהמפה מתרעננת כראוי
-// //         setTimeout(() => {
-// //             mapRef.current.invalidateSize();
-// //         }, 100);
-// //     }, [coordinates]);
-
-// //     return (
-// //         <div className="contact-container">
-// //             <h2>צור קשר</h2>
-// //             <div className="contact-content">
-// //                 <div className="contact-info">
-// //                     <p><strong>כתובת:</strong> טללים 23, ירושלים</p>
-// //                     <div className="map-container">
-// //                         <div id="map"></div>
-// //                     </div>
-// //                 </div>
-// //             </div>
-// //         </div>
-// //     );
-// // };
-
-// // export default Contact;
-
-
-
-import React, { useState } from "react";
-// // import React, { useEffect, useState, useRef } from 'react';
-// // import L from 'leaflet';
+import React, { useEffect, useState, useRef } from 'react';
+import L from 'leaflet';
 import '../css/Contact.css';
 
-const ContactForm = () => {
-  const [formData, setFormData] = useState({
-    name: "",
-    phone: "",
-    email: "",
-    message: "",
-  });
+delete L.Icon.Default.prototype._getIconUrl;
+L.Icon.Default.mergeOptions({
+    iconRetinaUrl: require('leaflet/dist/images/marker-icon-2x.png'),
+    iconUrl: require('leaflet/dist/images/marker-icon.png'),
+    shadowUrl: require('leaflet/dist/images/marker-shadow.png'),
+});
 
-  const handleChange = (e) => {
-    setFormData({ ...formData, [e.target.name]: e.target.value });
-  };
+const Contact = () => {
+    const [coordinates, setCoordinates] = useState({ lat: 31.7969, lng: 35.2134 });
+    const mapRef = useRef(null);
+    const markerRef = useRef(null);
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    console.log("Form Data Submitted:", formData);
-    // כאן ניתן להוסיף לוגיקה לשליחת הנתונים לשרת
-  };
+    useEffect(() => {
+        const fetchCoordinates = async () => {
+            try {
+                const response = await fetch(
+                    "https://nominatim.openstreetmap.org/search?format=json&q=טללים 23 ירושלים"
+                );
+                const data = await response.json();
+                if (data.length > 0) {
+                    setCoordinates({
+                        lat: parseFloat(data[0].lat),
+                        lng: parseFloat(data[0].lon),
+                    });
+                }
+            } catch (error) {
+                console.error("Error fetching coordinates:", error);
+            }
+        };
+        fetchCoordinates();
+    }, []);
 
-  return (
-    <div className="contact-container">
-      <div className="contact-form">
-        <form onSubmit={handleSubmit}>
-          <input
-            type="text"
-            name="name"
-            placeholder="שם"
-            value={formData.name}
-            onChange={handleChange}
-            required
-          />
-          <input
-            type="tel"
-            name="phone"
-            placeholder="טלפון"
-            value={formData.phone}
-            onChange={handleChange}
-            required
-          />
-          <input
-            type="email"
-            name="email"
-            placeholder="מייל"
-            value={formData.email}
-            onChange={handleChange}
-            required
-          />
-          <textarea
-            name="message"
-            placeholder="הודעה"
-            value={formData.message}
-            onChange={handleChange}
-          ></textarea>
-          <button type="submit">שלח</button>
-        </form>
-      </div>
-      <div className="contact-info">
-        <h2>צור קשר</h2>
-        <p><strong>שעות פעילות (משרד):</strong> א'-ה' 09:00-18:00</p>
-        <p><strong>שעות פעילות (מפעל):</strong> א'-ה' 07:00-16:00</p>
-        <p><strong>טלפון:</strong> 02-5712483</p>
-        <p><strong>ווצאפ שירות:</strong> <a href="https://wa.me/972527134164" target="_blank" rel="noopener noreferrer">+972-52-713-4164</a></p>
-        <p><strong>מייל:</strong> 5712483@gmail.com</p>
-      </div>
-    </div>
-  );
+    useEffect(() => {
+        if (!mapRef.current) {
+            mapRef.current = L.map('map').setView([coordinates.lat, coordinates.lng], 15);
+            L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', { maxZoom: 19 }).addTo(mapRef.current);
+            markerRef.current = L.marker([coordinates.lat, coordinates.lng]).addTo(mapRef.current);
+        } else {
+            mapRef.current.setView([coordinates.lat, coordinates.lng], 15);
+            markerRef.current.setLatLng([coordinates.lat, coordinates.lng]);
+        }
+
+        // לוודא שהמפה מתרעננת כראוי
+        setTimeout(() => {
+            mapRef.current.invalidateSize();
+        }, 100);
+    }, [coordinates]);
+
+    return (
+        <div className="contact-container">
+            <h2>צור קשר</h2>
+            <div className="contact-content">
+                <div className="contact-info">
+                    <p><strong>כתובת:</strong> טללים 23, ירושלים</p>
+                    <div className="map-container">
+                        <div id="map"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    );
 };
 
-export default ContactForm;
+export default Contact;
+
+
+
+// import React, { useState } from "react";
+// // // import React, { useEffect, useState, useRef } from 'react';
+// // // import L from 'leaflet';
+// import '../css/Contact.css';
+
+// const ContactForm = () => {
+//   const [formData, setFormData] = useState({
+//     name: "",
+//     phone: "",
+//     email: "",
+//     message: "",
+//   });
+
+//   const handleChange = (e) => {
+//     setFormData({ ...formData, [e.target.name]: e.target.value });
+//   };
+
+//   const handleSubmit = (e) => {
+//     e.preventDefault();
+//     console.log("Form Data Submitted:", formData);
+//     // כאן ניתן להוסיף לוגיקה לשליחת הנתונים לשרת
+//   };
+
+//   return (
+//     <div className="contact-container">
+//       <div className="contact-form">
+//         <form onSubmit={handleSubmit}>
+//           <input
+//             type="text"
+//             name="name"
+//             placeholder="שם"
+//             value={formData.name}
+//             onChange={handleChange}
+//             required
+//           />
+//           <input
+//             type="tel"
+//             name="phone"
+//             placeholder="טלפון"
+//             value={formData.phone}
+//             onChange={handleChange}
+//             required
+//           />
+//           <input
+//             type="email"
+//             name="email"
+//             placeholder="מייל"
+//             value={formData.email}
+//             onChange={handleChange}
+//             required
+//           />
+//           <textarea
+//             name="message"
+//             placeholder="הודעה"
+//             value={formData.message}
+//             onChange={handleChange}
+//           ></textarea>
+//           <button type="submit">שלח</button>
+//         </form>
+//       </div>
+//       <div className="contact-info">
+//         <h2>צור קשר</h2>
+//         <p><strong>שעות פעילות (משרד):</strong> א'-ה' 09:00-18:00</p>
+//         <p><strong>שעות פעילות (מפעל):</strong> א'-ה' 07:00-16:00</p>
+//         <p><strong>טלפון:</strong> 02-5712483</p>
+//         <p><strong>ווצאפ שירות:</strong> <a href="https://wa.me/972527134164" target="_blank" rel="noopener noreferrer">+972-52-713-4164</a></p>
+//         <p><strong>מייל:</strong> 5712483@gmail.com</p>
+//       </div>
+//     </div>
+//   );
+// };
+
+// export default ContactForm;
