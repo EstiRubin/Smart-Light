@@ -68,23 +68,26 @@ class ProductService extends BaseService {
       throw new Error("Error fetching products by name");
     }
   }
-  async getSimilarProducts (productId) {
-    const product = await Product.findById(productId);
-    if (!product) throw new Error("Product not found");
+async getSimilarProducts(productId) {
+  const product = await Product.findById(productId);
+  if (!product) throw new Error("Product not found");
 
-    const similarProducts = await Product.find({
-        _id: { $ne: productId },  // לא להחזיר את המוצר עצמו
-        $or: [
-            { tags: { $in: product.tags } },       // חיפוש לפי תגיות משותפות
-            { categoryID: { $in: product.categoryID } } // חיפוש לפי קטגוריה משותפת
-        ]
-    }).limit(5); // מחזירים רק 5 תוצאות
+  const similarProducts = await Product.aggregate([
+      { $match: {
+          _id: { $ne: product._id } // לא לכלול את המוצר עצמו
+      }},
+      { $addFields: {
+          matchingTagsCount: {
+              $size: { $setIntersection: ["$tags", product.tags] } } // חישוב מספר התגיות המשותפות
+      }},
+      { $match: { matchingTagsCount: { $gt: 0 } } }, // מסנן מוצרים שאין להם אף תגית משותפת
+      { $sort: { matchingTagsCount: -1 } }, // מיון לפי כמות תגיות משותפות (הכי הרבה ראשון)
+      { $limit: 5 } // מחזיר רק 5 תוצאות
+  ]);
 
-    return similarProducts;
+  return similarProducts;
 };
 
-
-  
   
 }
 
