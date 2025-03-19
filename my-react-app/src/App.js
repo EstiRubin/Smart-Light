@@ -20,7 +20,7 @@ function App() {
   const whatsappNumber = "972527134164";
   return (
     <>
-      {/* <BrowserRouter> */}
+      <BrowserRouter>
         <Navbar></Navbar>
         <Routes>
 
@@ -42,7 +42,7 @@ function App() {
         <Route exact path="/Cart" element={<CartPage />} />
         
         </Routes>
-      {/* </BrowserRouter> */}
+      </BrowserRouter> 
       <a
       href={`https://wa.me/${whatsappNumber}?text=שלום!%20אני%20מתעניין/ת%20בתאורה%20אפשר%20לקבל%20פרטים%20נוספים?`}
       target="_blank"
