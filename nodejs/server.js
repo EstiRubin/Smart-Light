@@ -13,6 +13,7 @@ import session from "express-session";
 import passport from 'passport';
 import emailRouter from "./routers/EmailRoutes.js"
 import contactRoutes from './routers/ContactRoutes.js'
+import path from 'path';
 // import "./Util/passportConfigUtil.js"
 configDotenv();
 
@@ -50,9 +51,14 @@ app.get("/", (req, res) => {
   res.send("Welcome to SmartLight platform! ⚡💡👋💡⚡");
 });
 
+app.get('*', (req, res) => {
+  res.sendFile(path.join(__dirname, '../my-react-app/src', 'index.html')); // עדכן את הנתיב בהתאם למיקום של index.html
+});
+
 app.listen(port, hostname, () => {
   console.log(`Server running at http://${hostname}:${port}/`);
 });
+
 
 console.log("EMAIL_USER:", process.env.EMAIL_USER);
 console.log("EMAIL_PASS:", process.env.EMAIL_PASS);
