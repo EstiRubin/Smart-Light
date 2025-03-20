@@ -34,7 +34,6 @@ export const sendCartToEmail = async (recipientEmail, cartData) => {
 
       // שולחים את המייל
       await transporter.sendMail(mailOptions);
-      console.log('Email sent successfully!');
   } catch (error) {
       console.error('Error in sending email:', error);
       throw new Error('Error sending cart to email');

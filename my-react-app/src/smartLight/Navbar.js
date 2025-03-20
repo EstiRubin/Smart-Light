@@ -5,6 +5,7 @@ import cart from "../img/cart.svg";
 import search from "../img/search.jpg";
 import "../css/NavbarStyle.css";
 import arrow from "../img/חץ.png";
+
 export default function Navbar() {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const [searchTerm, setSearchTerm] = useState("");
@@ -12,10 +13,11 @@ export default function Navbar() {
   const [isSearchVisible, setIsSearchVisible] = useState(false);
 
   const handleSearch = () => {
-    if (searchTerm) {
+    if (searchTerm !== "") {
       navigate(`/product/search/${searchTerm}`);
     }
   };
+
   return (
     <div className="navbar-container">
       <div className="navbar-top"></div>
@@ -36,7 +38,12 @@ export default function Navbar() {
               placeholder="חיפוש..."
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
-              onKeyDown={handleSearch} 
+              onKeyUp={(e) => {
+                if (e.key === "Enter") {
+                  handleSearch();
+
+                }
+              }}
               style={{ marginRight: "10px" }}
             />
           )}

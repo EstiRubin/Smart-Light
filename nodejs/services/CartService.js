@@ -55,7 +55,6 @@ class CartService extends BaseService {
 
     async sendCartToEmail(cartId, userEmail) {
         try {
-            console.log(this.repo);
             const cart = await this.repo.getById(cartId);
             await EmailService.sendCartToEmail(cart, userEmail);
         } catch (error) {

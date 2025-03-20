@@ -24,7 +24,6 @@ const ProjectDetails = () => {
       .get(API_URL)
       .then((response) => {
         setProject(response.data[0]);
-        console.log(response.data);
         setLoading(false);
       })
       .catch((error) => {

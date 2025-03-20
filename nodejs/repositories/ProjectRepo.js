@@ -27,7 +27,6 @@ class ProjectRepo extends BaseRepo{
 
             ]).exec();
         } catch (error) {
-            console.log(error.message);
             throw new Error('Something went wrong while fetching all projects');
         }
     }
@@ -54,7 +53,6 @@ class ProjectRepo extends BaseRepo{
                 }
             ]).exec();
         } catch (error) {
-            console.log(error.message);
             throw new Error('Something went wrong while fetching the project');
         }
     }

@@ -17,6 +17,9 @@ body {
   align-items: flex-end;
   height: auto;
   object-fit: cover;
+  position:fixed;
+  top: 38h;
+  left: 0;
 }
 .img-product img {
   width: 100%;
@@ -33,6 +36,7 @@ body {
   margin: 0; 
   padding: 0; 
   justify-content: flex-end; 
+  padding-left: 50vh;
 }
 .product-card {
   border: 2px solid black; 
@@ -90,6 +94,7 @@ body {
   align-items: center; 
   justify-content: space-between; 
   padding: 20px; 
+  margin-left: 46px;
   background-color: #ffffff; 
   border-bottom: 1px solid #ffffff;
   padding-left: 21%;

@@ -10,7 +10,6 @@ class BaseRepo {
             return await this.model.find({}).exec();
         }
         catch(error){
-            console.log(error.message);
             throw new Error('Something went wrong');
         }
     }
@@ -27,7 +26,6 @@ class BaseRepo {
             }
         }
         catch (errors) {
-            console.log(errors.message);
             throw new Error('Something went wrong');
         }
     }

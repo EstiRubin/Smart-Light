@@ -60,7 +60,7 @@ const ProductList = () => {
           )}
         </div>
         <div className="img-product">
-          <img src={productImage} alt="products" className="img-product"/>
+          <img src={productImage} alt="products"/>
         </div>
       </div>
     </>

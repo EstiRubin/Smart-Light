@@ -130,6 +130,7 @@
 
 .dropdown-absolute {
   position: absolute;
+  z-index: 99999;
   top: 0;
   right: 100%;
   background-color: white;

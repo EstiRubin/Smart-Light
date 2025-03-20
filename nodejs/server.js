@@ -58,8 +58,3 @@ app.get('*', (req, res) => {
 app.listen(port, hostname, () => {
   console.log(`Server running at http://${hostname}:${port}/`);
 });
-
-
-console.log("EMAIL_USER:", process.env.EMAIL_USER);
-console.log("EMAIL_PASS:", process.env.EMAIL_PASS);
-console.log("EMAIL_BUSINESS:", process.env.EMAIL_BUSINESS);

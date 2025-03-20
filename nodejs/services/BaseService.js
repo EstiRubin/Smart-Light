@@ -7,7 +7,6 @@ class BaseService {
         try {
         return await this.repo.getAll();
         } catch (errors) {
-        console.log(errors);
         throw new Error("Something went wrong");
         }
     }
@@ -23,7 +22,6 @@ class BaseService {
                 return product;
             }
         } catch (errors) {
-            console.log(errors);
             throw new Error("Something went wrong");
         }
     }
@@ -32,8 +30,6 @@ class BaseService {
         try {
             return await this.repo.add(data);
         } catch (errors) {
-            console.log(errors);
-            console.log(req.body);
             throw new Error("Something went wrong.");
         }
     }

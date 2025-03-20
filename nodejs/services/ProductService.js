@@ -17,7 +17,6 @@ class ProductService extends BaseService {
         throw new Error("Category not found");
       }
 
-      // Fetch products related to the category ID
       const products = await Product.find({ categoryID: category._id });
       
       return products;
@@ -26,25 +25,6 @@ class ProductService extends BaseService {
       throw new Error("Error fetching products by category");
     }
   }
-  // async getProductsByname(Name) {
-  //   try {
-  //     const isObjectId = /^[0-9a-fA-F]{24}$/.test(Name);
-
-  //     const products = await Product.find({
-  //       $or: [
-  //         { nameOfProduct: { $regex: Name, $options: 'i' } }, // Case-insensitive search by name
-  //         isObjectId ? { _id: Name } : {} // Only include this condition if Name is a valid ObjectId
-
-  //         // { _id: Name } // Search by ID
-  //       ]
-  //     });
-      
-  //     return products;
-  //   } catch (error) {
-  //     console.error(error);
-  //     throw new Error("Error fetching products by name");
-  //   }
-  // }
   
   async getProductsByname(Name) {
     try {
@@ -58,7 +38,6 @@ class ProductService extends BaseService {
         query.push({ _id: !isNaN(Name) && !isNaN(parseFloat(Name)) });
       }
   
-      console.log("Query:", query); // Log the query for debugging
   
       const products = await Product.find({ $or: query });
       
