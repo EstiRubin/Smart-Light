@@ -45,7 +45,7 @@ const ApiComponent = () => {
               <div key={project._id} className="project-card">
                 {/* תמונה */}
                 <img
-                  src={project.images[1]}
+                  src={project.images[0]}
                   alt={project.nameOfProject}
                   className="project-image"
                 />
